@@ -1,0 +1,107 @@
+
+    <div id="box">
+    		<!--顶部-->
+		    <div class='lxc_head'>
+		    	<span class='glyphicon glyphicon-th-list' id='s_span'></span>
+					<h2 class="lxc_h2">BugCenter v0.3(前端版)</h2>
+				</div>
+				<!--顶部end-->
+				<!--左导航-->
+				<div class='lxc_posi' id='lxc_p'>
+					<a class='lxc_a' href='javascript:;' id='na'>Name</a>
+					<a class='lxc_a' href='javascript:;' id='xq'>BUG列表</a>
+					<a class='lxc_a' href='javascript:;' id='tb'>图表</a>
+					<a class='lxc_a' href='javascript:;' id='tc'>退出</a>
+				</div>
+				<!--左导航end-->
+				<!--搜索-->
+				<div class='lxc_input'>
+					<input class='lxc_texta' type="text"/>
+					<button class='lxc_btn'>搜索</button>
+				</div>
+				<!--搜索end-->
+				<!--bug盒子-->
+				<div class='lxc_xq'>
+					<div class='error'>
+						<p>错误摘要（背景为红色的为-- <span>重要</span></p>
+						<p>小女生的身份晋级富士康，逐渐靠近当时反对恢复手机发送，开始就等死分到南昌重新收费。</p>
+					</div>
+					<div class='butt'>
+						<button>首页</button>
+						<button>上一页</button>
+						<button>下一页</button>
+						<button>尾页</button>	
+					</div>
+				</div>
+				<!--bug盒子end-->
+				<!--图表-->
+				<div class='lxc_tb'>
+						<!--<a href="javascript:;">线形图</a>
+						<a href="javascript:;">柄状图</a>
+						<a href="javascript:;">柱状图</a>-->
+						<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick"
+						</canvas> 
+				</div>
+			<!--图表end-->
+    </div>
+<script>
+	document.documentElement.style.fontSize=innerWidth/16+'px'
+		onresize=function(){
+			document.documentElement.style.fontSize=innerWidth/16+'px'
+		}
+
+	var btn=document.getElementsByClassName('lxc_btn')[0]
+	var tex=document.getElementsByClassName('lxc_texta')[0]
+	var anniu=document.getElementsByClassName('glyphicon')[0]
+	var po=document.getElementById('lxc_p')
+	var one=document.getElementsByClassName('lxc_xq')[0]
+	var two=document.getElementsByClassName('lxc_tb')[0]
+	var a=document.getElementsByClassName('lxc_a')
+	var box=document.getElementById('box')
+	//
+	btn.onclick=function(){
+		btn.style.transition='all 5s'
+		btn.style.transform='scale(0.7,0.7) translateX(7rem)'
+		btn.style.position='absolute'
+		tex.style.display='block'
+		tex.style.position='absolute'
+	}
+	anniu.onclick=function(){
+		po.style.position='absolute'
+		po.style.left='0'
+		po.style.transition='all 1s'
+	}
+	//bug
+	xq.onclick=function(){
+		po.style.position='absolute'
+		po.style.left='-6rem'
+		po.style.transition='all 1s'
+		one.style.display='block'
+		two.style.display='none'
+		xq.style.background='#000'
+		tb.style.background=''
+		tc.style.background=''
+	}
+	//图表
+	tb.onclick=function(){
+		po.style.position='absolute'
+		po.style.left='-6rem'
+		po.style.transition='all 1s'
+		one.style.display='none'
+		two.style.display='block'
+		tb.style.background='#000'
+		xq.style.background=''
+		tc.style.background=''
+	}
+	//退出
+	tc.onclick=function(){
+		po.style.position='absolute'
+		po.style.left='-6rem'
+		po.style.transition='all 1s'
+		one.style.display='none'
+		two.style.display='none'
+		tc.style.background='#000'
+		xq.style.background=''
+		tb.style.background=''
+	}
+</script>
