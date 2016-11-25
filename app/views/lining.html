@@ -1,0 +1,199 @@
+<div class="Ln-1">
+    <div class="col-sm-12">
+    	<div class="Bugcent">
+    	<b>Bugcenter</b>
+    	v0.0.1
+    	(测试专用)
+            <div class="LPosi">
+            	<div class="Lsearch">
+            	<div class="Lsearch1" id="Lndiv1">
+            		<input type="text" id="Lninp">
+            		<a href="javascript:;"class="glyphicon glyphicon-search" id="Lnsearch"></a>
+            		<span class="glyphicon glyphicon-remove" id="Lx"></span>
+            	</div>
+            </div>
+            </div>
+		</div>
+	</div>
+</div>
+<div class="Listleft" id="Listleft">
+	<div>
+		Bug一览：
+	</div>
+	<li class="Listleftli">折线图</li>
+	<li>柱状图</li>
+	<li>饼图</li>
+	<li>雷达图</li>
+</div>
+<div class="canvas">
+	<canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+</div>
+<div class="Lifm">
+	<div class="name">
+		Ui设计：
+	</div>
+	<ul>
+		<li>Bug总数：<b>{{UiL+"个"}}</b></li>
+		<li>重要Bug：<b>50个</b></li>
+		<li>中等Bug：<b>50个</b></li>
+		<li>一般Bug：<b>50个</b></li>
+		<li>已解决Bug：<b>1个</b></li>
+		<li>未解决Bug：<b>3个</b></li>
+	</ul>
+</div>
+<div class="Lifm">
+	<div class="name">
+		前端：
+	</div>
+	<ul>
+		<li>Bug总数：<b>{{QdL+"个"}}</b></li>
+		<li>重要Bug：<b>50个</b></li>
+		<li>中等Bug：<b>50个</b></li>
+		<li>一般Bug：<b>50个</b></li>
+		<li>已解决Bug：<b>1个</b></li>
+		<li>未解决Bug：<b>3个</b></li>
+	</ul>
+</div>
+<div class="Lifm">
+	<div class="name">
+		后台：
+	</div>
+	<ul>
+		<li>Bug总数：<b>{{HtL+"个"}}</b></li>
+		<li>重要Bug：<b>50个</b></li>
+		<li>中等Bug：<b>50个</b></li>
+		<li>一般Bug：<b>50个</b></li>
+		<li>已解决Bug：<b>1个</b></li>
+		<li>未解决Bug：<b>3个</b></li>
+	</ul>
+</div>
+<div class="Fabu">
+	<div>
+		<div class="Lhk">
+			<p>错误分类：</p>
+			<label class="radio-inline">
+			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Ui设计
+			</label>
+			<label class="radio-inline">
+			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">前端
+			</label>
+			<label class="radio-inline">
+			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">后台
+			</label>
+		</div>
+	</div>
+	<div class="Lhk">
+		<p>Bug频率：</p>
+		<select class="form-control">
+			<option>总是</option>
+			<option>偶尔</option>
+		</select>
+	</div>
+	<div class="Lhk">
+		<p>Bug重要性</p>
+		<select class="form-control">
+			<option>重要</option>
+			<option>中等</option>
+			<option>一般</option>
+		</select>
+	</div>
+	<div class="Lhk">
+		<p>Bug简介</p>
+		<textarea class="form-control" rows="3"></textarea>
+	</div>
+	<div class="Lhk">
+		<p>Bug详情：</p>
+		<text-angular ng-model="text1" class="Text"></text-angular>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	$(function(){
+	    $("#Lnsearch").click(function(){
+	        $("#Lndiv1").css({"width":"100%"})
+	        $("#Lninp").animate({
+	          "width": "85%",
+	          "paddingLeft":"1rem",
+	        },
+	          400, function() {
+	          $("#Lninp").css({
+	            "border":"0.025rem solid #fff"
+	          })
+	        });
+	        $(this).animate({
+	          "right": "2.5rem",
+	          "borderRadius": "50%",
+	        },
+	          200, function() {
+	            $("#Lx").animate({
+	              "right":"-0.5rem",
+	              "zIndex":'0'
+	            },100)
+	        });
+	    })
+	    $("#Lx").click(function(){
+	       $("#Lninp").animate({
+	          "width": "0rem",
+	          "paddingLeft":"0rem",
+	        },
+	          400, function() {
+	             $("#Lninp").css({
+	            "border":"none"
+	          })
+	        });
+	       $(this).animate({
+	          "right":"1rem",
+	          "zIndex":'-1'
+	       },200,function(){
+	         $("#Lndiv1").animate({
+	           "width":"3rem"},
+	           400);
+	         $("#Lnsearch").css({
+	          "borderRadius":"0.4rem",
+	          "right":"0"
+	         })
+	       })
+	    })
+	    $("#Listleft li").click(function(){
+	    	$(this).addClass("Listleftli").siblings().removeClass("Listleftli")
+	    })
+	})
+</script>
