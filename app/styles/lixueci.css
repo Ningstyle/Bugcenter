@@ -1,1 +1,138 @@
 
+body{
+	background:#eee;
+}
+#box{
+	width:100%;
+	background:#eee;
+	min-height:24rem;
+}
+.lxc_head{
+	width:100%;
+	height:2rem;
+	background:#000;
+}
+.lxc_h2{
+	color:#eee;
+	line-height:2rem;
+	font-size:0.75rem;
+	text-align: center;
+	margin: 0;
+}
+#s_span{
+font-size:0.75rem;
+	line-height:2rem;
+	position: absolute;
+	left:0.5rem;
+	color:#fff;
+}
+.lxc_posi{
+	width:6rem;
+	height:100%;
+	background:rgba(51,51,51,0.95);
+	position: absolute;
+	left:-6rem;
+	z-index:9999;
+}
+.lxc_posi a{
+	text-decoration:none;
+	color:#fff;
+	font-size:0.7rem;
+}
+.lxc_input{
+	width:100%;
+	height:5rem;
+	position:relative;
+}
+.lxc_texta{
+	width:11rem;
+	height:1.5rem;
+	position:absolute;
+	left:2rem;
+	top:1.7rem;
+	display:none;
+	border:0;
+	outline: none;
+	font-size:0.3rem;
+	border-radius:0.3rem;
+}
+.lxc_btn{
+	width:2.5rem;
+	height:2.5rem;
+	border-radius:50%;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-1.25rem;
+	margin-top:-1.25rem;
+	font-size:1rem;
+	text-align: center;
+	color:#fff;
+	outline:none;
+	background:darkslateblue;
+}
+.lxc_a{
+	display: block;
+	width:6rem;
+	height:2rem;
+	color:#fff;
+	margin-top:1rem;
+	text-align: center;
+	line-height:2rem;
+}
+.lxc_xq{
+	width:80%;
+	margin:0 auto;
+	min-height:16.5rem;
+	border-radius:0.5rem;
+	border:0.025rem solid #ddd;
+	padding-top:0.5rem;
+	}
+.lxc_xq p{
+	color:#666;
+	font-size:0.6rem;
+	line-height:1rem;
+	margin-left:0.1rem;
+	float:left;
+	
+}
+.lxc_xq span{
+	display: block;
+	width:1.5rem;
+	height:1rem;
+	font-size:0.45rem;
+	border-radius:0.15rem;
+	line-height:1rem;
+	text-align: center;
+	color:#fff;
+	background:red;
+	float:right;
+	margin-left:0.2rem;
+	
+}
+.butt{
+	width:100%;
+	height:1rem;
+	margin-left:1rem;
+}
+.error{
+	width:100%;
+	min-height:14.5rem;
+}
+.chart{
+	margin-top:2rem;
+}
+.lxc_tb{
+	width:80%;
+	margin:0 auto;
+	min-height:15rem;
+	border-radius:0.5rem;
+	border:0.025rem solid #ddd;
+	display:none;
+	text-align: center;
+	padding-top:0.5rem;
+	}
+	.lxc_tb a{
+		margin:0.2rem 0.5rem 0 0.5rem;
+	}
+
