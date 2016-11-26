@@ -22,7 +22,7 @@ angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$
 		method:"get",
 		params:{to:$scope.user}
 	}).success(function(e){
-		console.log(e)
+		$scope.Sdata = e
 	})
 }])
 	
