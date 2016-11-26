@@ -4,10 +4,78 @@
   padding:0;
   list-style:none;
 }
+.Motai{
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 999;
+  display:none;
+  transition:all 1s;
+}
+.Motai1{
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 999;
+  display:block;
+  transition:all 1s;
+}
+.Motai div{
+  width:18rem;
+  height:5rem;
+  background:#fff;
+  line-height:5rem;
+  text-align:center;
+  margin:5rem auto;
+  border-radius:0.8rem;
+  font-size:1.5rem;
+  position:relative;
+  top:-10rem;
+  opacity: 0;
+  z-index: 9999;
+   transition:all 1s;
+}
+.Motai1 div{
+  width:18rem;
+  height:5rem;
+  background:#fff;
+  line-height:5rem;
+  text-align:center;
+  margin:5rem auto;
+  border-radius:0.8rem;
+  font-size:1.5rem;
+  position:relative;
+  top:-10rem;
+  opacity: 0;
+  z-index: 9999;
+   transition:all 1s;
+}
+.Lndh{
+  animation-name: Lndh;
+  animation: Lndh 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes Lndh {
+  from {
+    top:-10rem;
+    opacity: 0
+  }
+  to {
+    top:0;
+    opacity: 1
+  }
+}
 .Ln-1{
   background:#000;
   position: fixed;
   width: 100%;
+  z-index: 998;
 }
 .Bugcent{
   height:4rem;
@@ -94,12 +162,15 @@
   margin:0 0.8rem;
 }
 .canvas canvas{
-  margin-top:3rem;
+  position:relative;
+  top:3rem;
 }
 .Listleft{
   height:3rem;
   background:#ddd;
   display:flex;
+  position:relative;
+  top:4rem;
 }
 .Listleft div{
   flex:3;
@@ -125,7 +196,7 @@
   display:block;
 }
 .Lifm{
-  margin:0.5rem 0.8rem;
+  margin:1.5rem 0.8rem;
   padding:0.3rem 0;
   border:0.025rem solid #ddd;
   border-radius:0.4rem;
