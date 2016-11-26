@@ -8,6 +8,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 	$scope.Users = "lnn"
 	$scope.Jue=["Ui设计","前端","后台"]
 	$scope.Fabu="Fabu"
+	$scope.Motai="Motai"
 	$scope.userName = []
 	//默认已指派
 	$scope.status =0
@@ -118,14 +119,42 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 		//存bug发布人
 		$scope.uesrifm.from =sessionStorage.getItem("username")
 		//执行$http,发布bug
-		$http({
-			url:"http://www.bugcenter.com.cn:1511/item",
-			method:"post",
-			data:$scope.uesrifm
-		}).success(function(e){
-			$scope.Fabu="Fabu"
-			console.log(e)
-		})
+		if($scope.uesrifm.classify==null){
+			$scope.Lntext="请选择Bug错误分类!"
+			$scope.Motai="Motai1"
+			$timeout(function(){
+				$scope.Motai="Motai"
+			},2000)
+		}else if($scope.uesrifm.summary==null){
+			$scope.Lntext="请填写此Bug简介!"
+			$scope.Motai="Motai1"
+			$timeout(function(){
+				$scope.Motai="Motai"
+			},2000)
+		}else if($scope.uesrifm.description==null){
+			$scope.Lntext="请填写此Bug详情!"
+			$scope.Motai="Motai1"
+			$timeout(function(){
+				$scope.Motai="Motai"
+			},2000)
+		}else{
+			$http({
+				url:"http://www.bugcenter.com.cn:1511/item",
+				method:"post",
+				data:$scope.uesrifm
+			}).success(function(e){
+				$scope.Lntext="发布成功!"
+				$scope.Motai="Motai1"
+				$timeout(function(){
+					$scope.Motai="Motai"
+				},1500)
+				$scope.uesrifm.classify=""
+				$scope.uesrifm.summary=""
+				$scope.uesrifm.description=""
+				console.log($scope.uesrifm)
+			})
+		}
+		
 	}
 
 	$scope.back = function(){
