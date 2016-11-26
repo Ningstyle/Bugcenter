@@ -84,7 +84,7 @@
   color:#fff;
 }
 .Bugcent b{
-  font-size:1.8rem;
+  font-size:2rem;
   color:#fff;
 }
 .Bugcent1{
@@ -94,7 +94,7 @@
   color:#333;
 }
 .Bugcent1 b{
-  font-size:1.6rem;
+  font-size:2rem;
   color:#666;
 }
 .col-sm-12{
@@ -103,6 +103,7 @@
 }
 .col-sm-12 button{
   margin:1.2rem 0;
+  font-size:1.6rem;
 }
 .Lsearch{
   width:100%;
