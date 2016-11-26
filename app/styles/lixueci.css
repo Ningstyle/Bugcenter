@@ -84,7 +84,7 @@ font-size:0.75rem;
 	line-height:2rem;
 }
 #lxc_hz{
-	width:80%;
+	width:90%;
 	margin: auto;
 	min-height:16rem;
 	border-radius:0 0 0.5rem 0.5rem;
@@ -163,4 +163,33 @@ font-size:0.75rem;
 	.lxc_tb a{
 		margin:0.2rem 0.5rem 0 0.5rem;
 	}
-
+.Lxred{
+	width:2rem;
+	height:1rem;
+	float:right;
+	font-size:0.8rem;
+	line-height:1rem;
+	text-align:center;
+	background:red;
+	color:#fff
+}
+.Lxred1{
+	width:2rem;
+	height:1rem;
+	float:right;
+	font-size:0.8rem;
+	line-height:1rem;
+	text-align:center;
+	background:blue;
+	color:#fff
+}
+.Lxred2{
+	width:2rem;
+	height:1rem;
+	float:right;
+	font-size:0.8rem;
+	line-height:1rem;
+	text-align:center;
+	background:green;
+	color:#fff
+}

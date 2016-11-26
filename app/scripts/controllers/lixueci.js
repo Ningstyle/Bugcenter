@@ -27,13 +27,24 @@ angular.module("bugcenterApp").controller("Lx",["$rootScope","$scope","$http","$
       ]
     }
   }
-  $scope.Lxuser = $rootScope.UserName.username
+  if($rootScope.UserName.username)
+  $scope.Lxipm="Lxred"
   $http({
   	url:"http://www.bugcenter.com.cn:1511/item",
   	method:"get",
   	params:{to:$scope.Lxuser}
   }).success(function(e){
-  	$scope.Lxdata1 = e
+  	console.log(e)
+  	for(var i =0;i<e.length;i++){
+  		if(e[i].importance==0){
+  			e[i].importance="重要"
+  		}else if(e[i].importance==1){
+  			e[i].importance="中等"
+  		}else if(e[i].importance==2){
+  			e[i].importance="一般"
+  		}
+  		$scope.Lxdata1 = e
+  	}
   })
 }])
 	
