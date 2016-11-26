@@ -20,19 +20,16 @@ angular.module("bugcenterApp").controller("Login",["$rootScope","$scope","$http"
 					}).success(function(e){
 						console.log(e)
 						if(e.charactor==0){
-							$rootScope.UserName = {}
-							$rootScope.UserName.username=e.username
 							$state.go("/Sy")
+							sessionStorage.setItem("Susername",e.username)
 						}
 						if(e.charactor==1){
 							$state.go("/Lx")
-							$rootScope.UserName = {}
-							$rootScope.UserName.username=e.username
+							sessionStorage.setItem("Lusername",e.username)
 						}
 						if(e.charactor==2){
 							$state.go("/Bx")
-							$rootScope.UserName = {}
-							$rootScope.UserName.username=e.username
+							sessionStorage.setItem("Busername",e.username)
 						}
 						if(e.charactor==3){
 							$state.go("/Ln")
