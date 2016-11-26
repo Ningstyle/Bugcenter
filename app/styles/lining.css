@@ -152,13 +152,25 @@
 }
 .Fabu{
   width:100%;
-  height:90%;
+  height:0%;
   position:fixed;
-  bottom:0;
+  bottom:-2rem;
   background:#fff;
   padding:0.8rem;
   padding-left:1rem;
   overflow-y: auto;
+  transition:all 1s;
+}
+.Fabu1{
+  width:100%;
+  height:96%;
+  position:fixed;
+  bottom:-2rem;
+  background:#fff;
+  padding:0.8rem;
+  padding-left:1rem;
+  overflow-y: auto;
+  transition:all 1s;
 }
 .Lhk{
   margin-bottom:1rem;
@@ -170,4 +182,31 @@
 }
 .form-control{
   height:auto;
+}
+.Button-ln{
+    width: 90%;
+    margin-left: -3rem;
+    position: relative;
+    left: 15%;
+    margin-bottom:3rem;
+    height:3rem;
+    display:flex;
+}
+.Button-ln button{
+  float:left;
+  margin:0 1rem;
+  flex:1;
+}
+#FabuLn{
+  width:4rem;
+  height:4rem;
+  border:0.025rem solid #eee;
+  border-radius:50%;
+  font-size:2rem;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  line-height:3.6rem;
+  left:50%;
+  margin-left:-2rem;
 }
