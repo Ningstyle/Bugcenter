@@ -1,7 +1,7 @@
-angular.module("bugcenterApp").controller("Lx",["$scope","$http","$interval",function($scope,$http,$interval){
+angular.module("bugcenterApp").controller("Lx",["$rootScope","$scope","$http","$interval",function($rootScope,$scope,$http,$interval){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
-  $scope.data = [
+  	$scope.series = ['Series A', 'Series B'];
+  	$scope.data = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90]
   ];
@@ -26,6 +26,14 @@ angular.module("bugcenterApp").controller("Lx",["$scope","$http","$interval",fun
         }
       ]
     }
-  };
+  }
+  $scope.Lxuser = $rootScope.UserName.username
+  $http({
+  	url:"http://www.bugcenter.com.cn:1511/item",
+  	method:"get",
+  	params:{to:$scope.Lxuser}
+  }).success(function(e){
+  	$scope.Lxdata1 = e
+  })
 }])
 	

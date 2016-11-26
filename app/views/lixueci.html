@@ -1,14 +1,14 @@
 
-    <div id="box">
+   
     		<!--顶部-->
 		    <div class='lxc_head'>
 		    	<span class='glyphicon glyphicon-th-list' id='s_span'></span>
 					<h2 class="lxc_h2">BugCenter v0.3(前端版)</h2>
 				</div>
 				<!--顶部end-->
+				 <div id="box">
 				<!--左导航-->
 				<div class='lxc_posi' id='lxc_p'>
-					<a class='lxc_a' href='javascript:;' id='na'>Name</a>
 					<a class='lxc_a' href='javascript:;' id='xq'>BUG列表</a>
 					<a class='lxc_a' href='javascript:;' id='tb'>图表</a>
 					<a class='lxc_a' href='javascript:;' id='tc'>退出</a>
@@ -21,18 +21,17 @@
 				</div>
 				<!--搜索end-->
 				<!--bug盒子-->
-				<div class='lxc_xq'>
-					<div class='error'>
-						<p>错误摘要（背景为红色的为-- <span>重要</span></p>
-						<p>小女生的身份晋级富士康，逐渐靠近当时反对恢复手机发送，开始就等死分到南昌重新收费。</p>
-					</div>
+				<div id="lxc_hz">
+					
+				</div>
+					
+				<!--换页-->
 					<div class='butt'>
 						<button>首页</button>
 						<button>上一页</button>
 						<button>下一页</button>
 						<button>尾页</button>	
 					</div>
-				</div>
 				<!--bug盒子end-->
 				<!--图表-->
 				<div class='lxc_tb'>
@@ -49,7 +48,52 @@
 		onresize=function(){
 			document.documentElement.style.fontSize=innerWidth/16+'px'
 		}
-
+		//手风琴效果
+	function getClass(){         //获取类的时候，必须用此法  否则不兼容
+		  if(document.getElementsByClassName){
+			  return document.getElementsByClassName("has_children");
+			  }else{
+				  var arr = [];
+				  var All = document.getElementsByTagName("*");
+				  for(var i = 0;i<All.length;i++){
+					  if(All[i].className == "has_children"){
+						  arr.push(All[i]);
+						  };
+					  };
+					  return arr
+				  };
+		  };
+	var oHz=getClass();//document.getElementsByClassName('has_children');
+	for(i=0;i<oHz.length;i++){
+		oHz[i].firstElementChild.onclick = function(){
+			if(this.parentNode.children[1].style.display !='block'){
+				_a=document.getElementsByTagName('a');
+				for(h=0;h<_a.length;h++){
+					_a[h].style.display='none';	
+				}
+				for(t=1;t<this.parentNode.children.length;t++){
+					this.parentNode.children[t].style.display="block";
+				}
+			}else{
+				for(j=1;j<this.parentNode.children.length;j++){
+					this.parentNode.children[j].style.display="none";
+				}
+			}
+//			if(this.parentNode.children[1].style.display !='block'){
+//				_btn=document.getElementsByTagName('button');
+//				for(h=0;h<_a.length;h++){
+//					_btn[h].style.display='none';	
+//				}
+//				for(t=1;t<this.parentNode.children.length;t++){
+//					this.parentNode.children[t].style.display="block";
+//				}
+//			}else{
+//				for(j=1;j<this.parentNode.children.length;j++){
+//					this.parentNode.children[j].style.display="none";
+//				}
+//			}
+		}	
+	}
 	var btn=document.getElementsByClassName('lxc_btn')[0]
 	var tex=document.getElementsByClassName('lxc_texta')[0]
 	var anniu=document.getElementsByClassName('glyphicon')[0]
@@ -60,15 +104,29 @@
 	var box=document.getElementById('box')
 	//
 	btn.onclick=function(){
-		btn.style.transition='all 5s'
+		btn.style.transition='all 2s'
 		btn.style.transform='scale(0.7,0.7) translateX(7rem)'
 		btn.style.position='absolute'
 		tex.style.display='block'
 		tex.style.position='absolute'
 	}
+	
 	anniu.onclick=function(){
+		if(po.style.left=='-6rem'){
+			po.style.position='absolute'
+			po.style.left='0rem'
+			po.style.transition='all 1s'
+		}else{
+			po.style.position='absolute'
+			po.style.left='-6rem'
+			po.style.transition='all 1s'
+		}
+		
+		
+	}
+	box.onclick=function(){
 		po.style.position='absolute'
-		po.style.left='0'
+		po.style.left='-6rem'
 		po.style.transition='all 1s'
 	}
 	//bug

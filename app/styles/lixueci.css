@@ -5,12 +5,14 @@ body{
 #box{
 	width:100%;
 	background:#eee;
-	min-height:24rem;
+	min-height:20rem;
 }
 .lxc_head{
 	width:100%;
 	height:2rem;
 	background:#000;
+	position: fixed;
+	top:0;
 }
 .lxc_h2{
 	color:#eee;
@@ -43,6 +45,7 @@ font-size:0.75rem;
 	width:100%;
 	height:5rem;
 	position:relative;
+	margin-top:2rem;
 }
 .lxc_texta{
 	width:11rem;
@@ -80,13 +83,17 @@ font-size:0.75rem;
 	text-align: center;
 	line-height:2rem;
 }
+#lxc_hz{
+	width:80%;
+	margin: auto;
+	min-height:16rem;
+	border-radius:0 0 0.5rem 0.5rem;
+	border:0.025rem solid #ddd;
+}
 .lxc_xq{
 	width:80%;
-	margin:0 auto;
-	min-height:16.5rem;
-	border-radius:0.5rem;
-	border:0.025rem solid #ddd;
-	padding-top:0.5rem;
+	height:15rem;
+	margin: 0;
 	}
 .lxc_xq p{
 	color:#666;
@@ -94,30 +101,51 @@ font-size:0.75rem;
 	line-height:1rem;
 	margin-left:0.1rem;
 	float:left;
-	
-}
-.lxc_xq span{
-	display: block;
-	width:1.5rem;
-	height:1rem;
-	font-size:0.45rem;
-	border-radius:0.15rem;
-	line-height:1rem;
-	text-align: center;
-	color:#fff;
-	background:red;
-	float:right;
-	margin-left:0.2rem;
-	
 }
 .butt{
 	width:100%;
-	height:1rem;
-	margin-left:1rem;
+	height:1.5rem;
+	display: block;
+	text-align: center;
+	margin: ;
 }
-.error{
-	width:100%;
-	min-height:14.5rem;
+.yij{
+	display: block;
+	color:#fff;
+	float:right;
+	background:#000;
+	font-size:0.4rem;
+	border:0;
+}
+.buga{
+	display: block;
+	text-align: center;
+	width: 12.7rem;
+	height:1rem;
+}
+.has_children{
+	background : #555;
+	color :#fff;
+	margin:0 ;
+	width: 12.7rem;
+	cursor:pointer;
+	height:1rem;
+}
+.highlight{
+	color : #fff;
+	background : green;
+}
+.has_children a{
+	-background : #888;
+	height: auto;
+	float:left;
+	width:12.7rem;
+}
+#lxc_sous{
+	width:12.7rem;
+	min-height:3rem;
+	display:none;
+	border-bottom:0.025rem solid #888888;
 }
 .chart{
 	margin-top:2rem;
