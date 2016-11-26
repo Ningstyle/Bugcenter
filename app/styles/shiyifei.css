@@ -19,9 +19,9 @@ ul,li{list-style: none;}
 .s_fen{width:10rem;position: absolute;bottom: 0.2rem;margin-left: 5.6rem;}
 #s_shou{width:20%;height: 1.49rem;border:0.05rem solid #ddd;font-size:1.2rem;outline: none;border-radius: 0.3rem;float:right;position: absolute;top: 0rem;right:0;}
 #s_tubiao{display:none;width:80%;border:0px solid #000;margin:0 auto;margin-top:1.5rem;position: absolute;top:1.5rem;left:10%;}
+.s_p1{border:1px solid #000;display: block;width:16em;height:auto;overflow: hidden;}
 
-
-
+.s_button{margin-left:5.35rem;border-radius: 0.2rem;border:0;background:green;color:#fff;}
 
 
 
