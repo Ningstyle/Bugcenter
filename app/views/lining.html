@@ -67,46 +67,58 @@
 		<li>未解决Bug：<b>3个</b></li>
 	</ul>
 </div>
-<div class="Fabu">
+<div class="glyphicon glyphicon-plus" id="FabuLn" ng-click="FabuLn()"></div>
+<div ng-class="Fabu">
 	<div>
 		<div class="Lhk">
 			<p>错误分类：</p>
-			<label class="radio-inline">
-			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Ui设计
-			</label>
-			<label class="radio-inline">
-			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">前端
-			</label>
-			<label class="radio-inline">
-			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">后台
-			</label>
+			<label class="radio-inline" ng-repeat="x in dataname">
+			  	<input type="radio" name="inlineRadioOptions" id="inlineRadio{{$index}}" value="option1" ng-click="fn($index)">{{x}}
+			</label >
 		</div>
 	</div>
 	<div class="Lhk">
 		<p>Bug频率：</p>
-		<select class="form-control">
-			<option>总是</option>
-			<option>偶尔</option>
+		<select class="form-control" ng-model="jinc">
+			<option ng-repeat="x in frequency">{{x}}</option>
 		</select>
 	</div>
 	<div class="Lhk">
 		<p>Bug重要性</p>
-		<select class="form-control">
-			<option>重要</option>
-			<option>中等</option>
-			<option>一般</option>
+		<select class="form-control" ng-model="imp">
+			<option ng-repeat="x in importance ">{{x}}</option>
 		</select>
 	</div>
 	<div class="Lhk">
 		<p>Bug简介</p>
-		<textarea class="form-control" rows="3"></textarea>
+		<textarea class="form-control" rows="3" ng-model="Textarea"></textarea>
 	</div>
 	<div class="Lhk">
 		<p>Bug详情：</p>
 		<text-angular ng-model="text1" class="Text"></text-angular>
 	</div>
+	<div class="Lhk">
+		<p>Bug来自：</p>
+		<select class="form-control" ng-model="Users">
+			<option ng-repeat="x in userName">{{x}}</option>
+		</select>
+	</div>
+	<div class="Lhk">
+		<div class="Button-ln">
+			<button type="button" class="btn btn-primary" ng-click="Submit()">发布Bug</button>
+			<button type="button" class="btn btn-primary" ng-click="back()">返回查看</button>
+		</div>
+	</div>
 </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
+<div class="modal fade bs-example-modal-sm" tabindex="1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
 
 
 
