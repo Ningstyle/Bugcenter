@@ -13,6 +13,7 @@ body{
 	background:#000;
 	position: fixed;
 	top:0;
+	z-index:9999;
 }
 .lxc_h2{
 	color:#eee;
@@ -95,6 +96,7 @@ font-size:0.75rem;
 	height:15rem;
 	margin: 0;
 	}
+
 .lxc_xq p{
 	color:#666;
 	font-size:0.6rem;
@@ -192,4 +194,13 @@ font-size:0.75rem;
 	text-align:center;
 	background:green;
 	color:#fff
+}
+.settled{
+	float:right;
+}
+.time{
+	margin-top:0.5rem;
+}
+.Lxdatatw{
+	float:right;
 }
