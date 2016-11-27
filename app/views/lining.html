@@ -31,46 +31,195 @@
 	<li>雷达图</li>
 </div>
 <div class="canvas">
-	<canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+	<canvas class="chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
 </div>
-<div class="Lifm">
-	<div class="name">
-		Ui设计：
+<!-- <div class="Bugxq" ng-repeat="x in userName">
+	<div class="Lnjian">{{x}}</div>
+	<div>
+
+		<div>
+			<p>时间</p><p>状态</p>
+		<div>
 	</div>
-	<ul>
-		<li>Bug总数：<b>{{UiL+"个"}}</b></li>
-		<li>重要Bug：<b>50个</b></li>
-		<li>中等Bug：<b>50个</b></li>
-		<li>一般Bug：<b>50个</b></li>
-		<li>已解决Bug：<b>1个</b></li>
-		<li>未解决Bug：<b>3个</b></li>
-	</ul>
-</div>
-<div class="Lifm">
-	<div class="name">
-		前端：
+	
+</div> -->
+<div class="Bugxq">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  		<div class="panel panel-default">
+    		<div class="panel-heading" role="tab" id="headingOne">
+      			<h4 class="panel-title">
+        			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+         				 已关闭Bug列表
+        			</b>
+     			 </h4>
+    		</div>
+    		<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      			<div class="panel-body">
+					<ul class="Buglist" ng-repeat="x in buglist2">
+					<p>{{$index+1}}、</p>
+						<li>
+							<div class="bugleft">
+								bug来自：
+							</div>
+							<div class="bugright">
+								{{x.to}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug简介：
+							</div>
+							<div class="bugright">
+								{{x.summary}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug详情：
+							</div>
+							<div class="bugright">
+								{{x.description}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug重要性：
+							</div>
+							<div class="bugright">
+								{{x.importance}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								Bug时间：
+							</div>
+							<div class="bugright">
+								{{x.date}}
+							</div>
+						</li>
+						<button class="bugbutton" disabled="true">已关闭</button>
+					</ul>
+     			 </div>
+   			 </div>
+  		</div>
+
+  		<div class="panel panel-default">
+    		<div class="panel-heading" role="tab" id="headingThree">
+      			<h4 class="panel-title">
+        			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         				 未关闭Bug列表
+        			</b>
+     			 </h4>
+    		</div>
+    		<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      			<div class="panel-body">
+					<ul class="Buglist" ng-repeat="x in buglist">
+					<p>{{$index+1}}、</p>
+						<li>
+							<div class="bugleft">
+								bug来自：
+							</div>
+							<div class="bugright">
+								{{x.to}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug简介：
+							</div>
+							<div class="bugright">
+								{{x.summary}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug详情：
+							</div>
+							<div class="bugright">
+								{{x.description}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug重要性：
+							</div>
+							<div class="bugright">
+								{{x.importance}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								Bug时间：
+							</div>
+							<div class="bugright">
+								{{x.date}}
+							</div>
+						</li>
+						<button ng-class="bugguanbi" ng-click="Fnout(x)" ng-disabled="bugg">{{gunabi}}</button>
+					</ul>
+     			 </div>
+   			 </div>
+  		</div>
+
+
+  		<div class="panel panel-default">
+    		<div class="panel-heading" role="tab" id="headingFour">
+      			<h4 class="panel-title">
+        			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+         				 未处理Bug列表
+        			</b>
+     			 </h4>
+    		</div>
+    		<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      			<div class="panel-body">
+					<ul class="Buglist" ng-repeat="x in buglist1">
+					<p>{{$index+1}}、</p>
+						<li>
+							<div class="bugleft">
+								bug来自：
+							</div>
+							<div class="bugright">
+								{{x.to}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug简介：
+							</div>
+							<div class="bugright">
+								{{x.summary}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug详情：
+							</div>
+							<div class="bugright">
+								{{x.description}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								bug重要性：
+							</div>
+							<div class="bugright">
+								{{x.importance}}
+							</div>
+						</li>
+						<li>
+							<div class="bugleft">
+								Bug时间：
+							</div>
+							<div class="bugright">
+								{{x.date}}
+							</div>
+						</li>
+						<button class="bugbutton2" disabled="true">待处理</button>
+					</ul>
+     			 </div>
+   			 </div>
+  		</div>
 	</div>
-	<ul>
-		<li>Bug总数：<b>{{QdL+"个"}}</b></li>
-		<li>重要Bug：<b>50个</b></li>
-		<li>中等Bug：<b>50个</b></li>
-		<li>一般Bug：<b>50个</b></li>
-		<li>已解决Bug：<b>1个</b></li>
-		<li>未解决Bug：<b>3个</b></li>
-	</ul>
-</div>
-<div class="Lifm">
-	<div class="name">
-		后台：
-	</div>
-	<ul>
-		<li>Bug总数：<b>{{HtL+"个"}}</b></li>
-		<li>重要Bug：<b>50个</b></li>
-		<li>中等Bug：<b>50个</b></li>
-		<li>一般Bug：<b>50个</b></li>
-		<li>已解决Bug：<b>1个</b></li>
-		<li>未解决Bug：<b>3个</b></li>
-	</ul>
 </div>
 <div class="glyphicon glyphicon-plus" id="FabuLn" ng-click="FabuLn()"></div>
 <div ng-class="Fabu">

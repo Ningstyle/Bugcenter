@@ -161,10 +161,12 @@
 }
 .canvas{
   margin:0 0.8rem;
+  margin-top: 2rem;
 }
 .canvas canvas{
   position:relative;
   top:3rem;
+  margin-bottom:3rem;
 }
 .Listleft{
   height:3rem;
@@ -281,4 +283,70 @@
   line-height:3.6rem;
   left:50%;
   margin-left:-2rem;
+  position: fixed;
+  top: 90%;
+}
+.panel-title b{
+  text-align:center;
+  width:100%;
+  height: 100%;
+    display: block;
+}
+.Bugxq{
+  margin:0 0.8rem;
+}
+.Buglist{
+  height:auto;
+  overflow:hidden;
+  border-bottom:0.025rem solid #ddd;
+  padding-bottom:1rem;
+  margin-bottom:1rem
+}
+.Buglist li{
+  width:100%;
+  display:block;
+}
+.Buglist li div.bugleft{
+  float:left;
+  width:30%;
+  line-height:2rem;
+  height:auto;
+
+}
+.Buglist li div.bugright{
+  float:left;
+  width:70%;
+  line-height:2rem;
+  height:auto;
+ word-wrap: break-word;
+}
+.bugbutton{
+  width:6rem;
+  height:3rem;
+  border:none;
+  outline:none;
+  background:#ddd;
+  color:#333;
+  float:right;
+  border-radius:0.2rem;
+}
+.bugbutton1{
+  width:6rem;
+  height:3rem;
+  border:none;
+  outline:none;
+  background:#2a6496;
+  color:#fff;
+  float:right;
+  border-radius:0.2rem;
+}
+.bugbutton2{
+  width:6rem;
+  height:3rem;
+  border:none;
+  outline:none;
+  background:#ddd;
+  color:#333;
+  float:right;
+  border-radius:0.2rem;
 }
