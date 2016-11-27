@@ -21,27 +21,12 @@
     	
     	<!--手风琴-->
     	<div id="s_box">
-    		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          错误摘要(重要错误背景为红色)
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-       proident. Ad vegan excepteur butcher vice lomo.
-      </div>
-    </div>
-  </div>
-  
-  
- 
-</div> 		
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    		  <shoufenqing  data="Sdata"></shoufenqing>
+        </div>
     	</div>
   <!--手风琴结束-->
+  
   <!-- 图标 -->
   <div id="s_tubiao">
         <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" 
@@ -61,10 +46,8 @@
  
   <!-- 分页结束 --> 
     </div>
-    
-    
     <script>
-        var oul=document.getElementById('s_ul');
+      var oul=document.getElementById('s_ul');
         var ali=oul.getElementsByTagName('li');
         for(var i=0;i<ali.length;i++){
           ali[i].onclick=function(){
@@ -76,17 +59,17 @@
         }
         }
         
-    		s_span.onclick=function(){
-    			if(s_nav.style.left=="0rem"){
-    				s_span.style.color="#9d9d9d";
-    				
-    				s_nav.style.left="-6rem";
-    			}else{
-    				s_span.style.color="#fff";
-    				s_nav.style.left="0rem";
-    				
-    			}  				
-    		}
+        s_span.onclick=function(){
+          if(s_nav.style.left=="0rem"){
+            s_span.style.color="#9d9d9d";
+            
+            s_nav.style.left="-6rem";
+          }else{
+            s_span.style.color="#fff";
+            s_nav.style.left="0rem";
+            
+          }         
+        }
       s_center.onclick=function(){
        s_nav.style.left="-6rem";
       }
@@ -109,11 +92,13 @@
          this.className="s_active"
       }
     </script>
+    
+    
    <script type="text/javascript">	
 	document.documentElement.style.fontSize = innerWidth/16+'px';
 	onresize = function(){
 		document.documentElement.style.fontSize = innerWidth/16+'px';
-	};
+	};/*/8*/
 	</script>
  
 
