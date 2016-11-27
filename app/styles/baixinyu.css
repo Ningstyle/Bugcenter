@@ -1,5 +1,5 @@
 body{
-	padding-bottom:2rem;
+	padding-bottom: 1.8rem;
 }
 .b_box{
 	width: 100%;
@@ -70,18 +70,8 @@ body{
 	display: block;
 }
 
-.b_Tubiao{
-	display: none;
-}
-.BBB{
-	width: 2rem;
-    height: 1rem;
-    float: right;
-    font-size: 0.8rem;
-    line-height: 1rem;
-    text-align: center;
-    background: red;
-    color: #fff;
+.active888{
+	display: block;
 }
 
 
