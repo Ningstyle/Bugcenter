@@ -33,7 +33,7 @@ angular
           controller:"Bx"
         }),
         ChartJsProvider.setOptions({
-            chartColors: ['#FF5252', '#FF8A80'],
+            chartColors: ['blue', 'black'],
             responsive: true
         });
         // Configure all line charts

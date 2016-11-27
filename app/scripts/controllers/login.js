@@ -2,18 +2,31 @@ angular.module("bugcenterApp").controller("Login",["$rootScope","$scope","$http"
 	$scope.class=$scope.class1='form-group has-success'
 	$scope.check=false
 	$scope.login = function(){
-		// if($scope.updata&&$scope.updata.username==null){
-		// 	$scope.Lntext="请正确输入账号信息!"
-		// 	$scope.Motai="Motai1"
-		// 	$timeout(function(){
-		// 		$scope.Motai="Motai"
-		// 	},2000)
+		if($scope.updata){
+			if($scope.updata.username==null){
+				$scope.Lntext="请输入正确的登录账号!"
+				$scope.Motai="Motai1"
+				$timeout(function(){
+					$scope.Motai="Motai"
+				},2000)
+			}else if($scope.updata.password==null){
+				$scope.Lntext="请输入正确的登录密码!"
+				$scope.Motai="Motai1"
+				$timeout(function(){
+					$scope.Motai="Motai"
+				},2000)
+			}
 				$http({
 					url:"http://www.bugcenter.com.cn:1511/users/login",
 					method:"post",
 					data:$scope.updata
 				}).success(function(e){
 					$scope.uid=e.uid
+					$scope.Lntext="登录成功!"
+					$scope.Motai="Motai1"
+					$timeout(function(){
+						$scope.Motai="Motai"
+					},1500)
 					$http({
 						url:"http://www.bugcenter.com.cn:1511/users/"+$scope.uid,
 						method:"get",
@@ -36,10 +49,21 @@ angular.module("bugcenterApp").controller("Login",["$rootScope","$scope","$http"
 							sessionStorage.setItem("username",e.username)
 						}
 					})
-				})
-			// }else{
-			// 	alert(2)
-			// }
+				}).error(function() {
+					$scope.Lntext="登录失败，请重新登录!"
+					$scope.Motai="Motai1"
+					$timeout(function(){
+						$scope.Motai="Motai"
+					},2000)
+					$scope.updata=""
+		});
+			}else{
+				$scope.Lntext="请完整填写登录信息!"
+				$scope.Motai="Motai1"
+				$timeout(function(){
+					$scope.Motai="Motai"
+				},2000)
+			}
 		}
 }])
 	
