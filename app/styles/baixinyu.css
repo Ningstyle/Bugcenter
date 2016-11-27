@@ -1,3 +1,6 @@
+body{
+	padding-bottom:2rem;
+}
 .b_box{
 	width: 100%;
 	height: 2rem;
@@ -59,18 +62,26 @@
 }
 .Center{
 	width: 100%;
-	background: red;
 }
 .b_bug{
 	height: 12rem;
 	margin-left: 0.6rem;
 	margin-right: 0.6rem;
-	background: #f90;
 	display: block;
 }
 
 .b_Tubiao{
 	display: none;
+}
+.BBB{
+	width: 2rem;
+    height: 1rem;
+    float: right;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    text-align: center;
+    background: red;
+    color: #fff;
 }
 
 
