@@ -5,7 +5,7 @@
 <div class='lxc_posi' id='lxc_p'>
 	<a class='lxc_a active' href='javascript:;' id='xq'>BUG列表</a>
 	<a class='lxc_a' href='javascript:;' id='tb'>图表</a>
-	<a class='lxc_a' href='javascript:;' id='tc'>退出</a>
+	<a class='lxc_a' href='javascript:;' id='tc' ng-click='Quit()'>退出</a>
 </div>
 <div id="box">
 	<div class='lxc_input'>
@@ -16,14 +16,17 @@
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			<shoufenqing data="Lxdata1"></shoufenqing>
 		</div>
-		<div class='butt'>
+		<script>
+			
+//			var totalPage=Lxdata1.length
+		</script>
+		<div id='butt'>
 			<!--<ul class="pagination" style="margin: 0px;">
 				<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:;" ng-click="p_index()">首页</a></li>
 				<li ng-class="{true:'active'}[p_current==page]" ng-repeat="page in pages"><a href="javascript:;" ng-click="load_page(page)">{{ page }}</a></li>
 				<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:;" ng-click="p_last()">尾页</a></li>
 			</ul>-->
-			<button onclick="Fn(0)">上一页</button>
-			<button onclick="Fn(1)">下一页</button>
+			
 		</div>
 	</div>
 	<div class='lxc_tb'>

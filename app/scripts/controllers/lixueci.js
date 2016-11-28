@@ -50,7 +50,10 @@ $scope.fn=function(e){
 	
 })
 }
-
+$scope.Quit=function(){
+	sessionStorage.clear()
+	$state.go('/login')
+}
 //$scope.Lxipm="Lxred"
   $http({
   	url:"http://www.bugcenter.com.cn:1511/item",
@@ -97,8 +100,75 @@ $scope.fn=function(e){
   			e[i].frequency="经常"
   		}
   	}
-		
+	console.log(e.length)	
+//	var num=e.length;
+//	if(e.length>5){
+//		//去到第几页
+//		
+//	}
   })
+//var totalpage,pagesize,cpage,count;
+//cpage = 1; //所在的页数
+//				num=data.length;
+//				setpage();
+//function gotopage(target)    
+//	{     
+//	    cpage = target;        //把页面计数定位到第几页 
+//	    	setpage(); 
+//	    
+//	} 
+//	//获取分页
+//		function setpage() 
+//		{ 
+//		    if(totalpage>3){        //总页数大于5页 
+//		        if(parseInt((cpage-1)/3) == 0) //在5页以前
+//		        {             
+//		            for (count=1;count<=3;count++) //循环一下页数
+//		            {    if(count!=cpage)    //除了当前显示的页数
+//		                { 
+//		                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>"; 
+//		                }else{      //显示当前页数
+//		                    outstr = outstr + "<span class='current'>"+count+"</span>"; 
+//		                } 
+//		            } 
+//		            outstr ="<a href='javascript:void(0)' onclick='gotopage("
+//		            +(cpage-1)+")'>上一页</a>"+ outstr + "<a href='javascript:void(0)' onclick='gotopage("+(cpage+1)+")'> 下一页 </a><a href='javascript:void(0)' onclick='gotopage("+(parseInt(totalpage/3)*3+1)+")'> 末页 </a>"; 
+//		        } 
+//		        else if(parseInt((cpage-1)/3) == parseInt(totalpage/3)) //正好是末页
+//		        {     
+//		            outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(1)+")'>首页</a><a href='javascript:void(0)' onclick='gotopage("
+//		            +(cpage-1)+")'>上一页</a>";
+//		            					for(count=parseInt(totalpage/3)*3+1;count<=totalpage;count++) 
+//		            {    if(count!=cpage) 
+//		                { 
+//		                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>"; 
+//		                }else{ 
+//		                    outstr = outstr + "<span class='current'>"+count+"</span>"; 
+//		                } 
+//		            } 
+//		            outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("
+//		            +(cpage+1)+")'>下一页</a>";
+//		        } 
+//		        else //除去首页和末页，中间的那些页
+//		        {     
+//		            outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+(1)+")'>首页</a><a href='javascript:void(0)' onclick='gotopage("
+//		            +(cpage-1)+")'>上一页</a>"; 
+//		            for (count=parseInt((cpage-1)/3)*3+1;count<=parseInt((cpage-1)/3)*3+3;count++) 
+//		            {         
+//		                if(count!=cpage) 
+//		                { 
+//		                    outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("+count+")'>"+count+"</a>"; 
+//		                }else{ 
+//		                    outstr = outstr + "<span class='current'>"+count+"</span>"; 
+//		                } 
+//		            } 
+//		            outstr = outstr + "<a href='javascript:void(0)' onclick='gotopage("
+//		            +(cpage+1)+")'>下一页</a><a href='javascript:void(0)' onclick='gotopage("+(parseInt(totalpage/3)*3+1)+")'> 末页 </a>"; 
+//		        } 
+//		    }     
+//		    document.getElementById("butt").innerHTML = "<span id='info'>共"+num+"条数据,"+totalpage+"页|第"+cpage+"页<\/span>" + outstr+"<input type='text' class='text'><button class='jump' onclick='jump(this)'>跳转到</button>"; 
+//		    outstr = ""; 
+//		} 
 
 }])
 	

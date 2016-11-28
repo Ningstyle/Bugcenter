@@ -203,3 +203,9 @@ font-size:0.75rem;
 .Lxdatatw{
 	float:right;
 }
+.current{ 
+		    border:1px solid #83E7E4; 
+		    background:#DFF9F8; 
+		    margin:1px; 
+		    color:#27CBC7; 
+		} 
