@@ -17,10 +17,13 @@
 			<shoufenqing data="Lxdata1"></shoufenqing>
 		</div>
 		<div class='butt'>
-			<button>首页</button>
-			<button>上一页</button>
-			<button>下一页</button>
-			<button>尾页</button>
+			<!--<ul class="pagination" style="margin: 0px;">
+				<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:;" ng-click="p_index()">首页</a></li>
+				<li ng-class="{true:'active'}[p_current==page]" ng-repeat="page in pages"><a href="javascript:;" ng-click="load_page(page)">{{ page }}</a></li>
+				<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:;" ng-click="p_last()">尾页</a></li>
+			</ul>-->
+			<button onclick="Fn(0)">上一页</button>
+			<button onclick="Fn(1)">下一页</button>
 		</div>
 	</div>
 	<div class='lxc_tb'>
@@ -99,4 +102,5 @@
 		xq.style.background = ''
 		tb.style.background = ''
 	}
+	
 </script>

@@ -1,4 +1,12 @@
-angular.module("bugcenterApp").controller("Lx",["$rootScope","$scope","$http","$interval",function($rootScope,$scope,$http,$interval){
+angular.module("bugcenterApp").filter('f',function(){
+					return function(a,page,size){
+						if(a!=undefined){
+							var start=page*size
+							var end=(page+1)*size
+							return a.slice(start,end)
+						}
+					}
+				}).controller("Lx",["$rootScope","$scope","$http","$interval",function($rootScope,$scope,$http,$interval){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   	$scope.series = ['Series A', 'Series B'];
   	$scope.data = [
@@ -27,7 +35,12 @@ angular.module("bugcenterApp").controller("Lx",["$rootScope","$scope","$http","$
       ]
     }
   }
+  	$scope.s=0
+	$scope.Shang=function(e){
+			$scope.s=e
+	}
 $scope.Lxuser = sessionStorage.getItem("Lusername")
+
 $scope.fn=function(e){
 	$http({
 		url:'http://www.bugcenter.com.cn:1511/item/'+e,
