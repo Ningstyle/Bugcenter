@@ -9,7 +9,7 @@
    		<ul id="oUl">
    			<li class="haha">BUG列表</li>
    			<li class="haha">图表</li>
-   			<li>退出</li>
+   			<li id="Quit">退出</li>
    		</ul>
    		<div id="dabox">
    			<div class="b_Tubiao" style="display: block;">
@@ -46,7 +46,9 @@
   			oDiv[this.index].style.display='block'
   		}
   	}
-
+	Quit.onclick=function(){
+		sessionStorage.clear()
+	}
 	
 	
 	
