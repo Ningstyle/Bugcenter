@@ -28,6 +28,16 @@ angular.module("bugcenterApp").controller("Lx",["$rootScope","$scope","$http","$
     }
   }
 $scope.Lxuser = sessionStorage.getItem("Lusername")
+$scope.fn=function(e){
+	$http({
+		url:'http://www.bugcenter.com.cn:1511/item/'+e,
+		method:'put',
+		data:{status:1}
+	}).success(function(){
+	
+})
+}
+
 //$scope.Lxipm="Lxred"
   $http({
   	url:"http://www.bugcenter.com.cn:1511/item",
@@ -35,6 +45,17 @@ $scope.Lxuser = sessionStorage.getItem("Lusername")
   	params:{"to":$scope.Lxuser}
   }).success(function(e){
   	
+  	for(var i=0;i<e.length;i++){
+			if(e[i].status==0){
+				e[i].status="解决"
+				}
+			 else if(e[i].status==1){
+				e[i].status="已解决"				
+			}
+			else if(e[i].status==2){
+				e[i].status="已关闭"				
+			}
+		}
   	$scope.Lxdata1 = e
   	for(var i =0;i<e.length;i++){
   		if(e[i].importance==0){
@@ -63,18 +84,7 @@ $scope.Lxuser = sessionStorage.getItem("Lusername")
   			e[i].frequency="经常"
   		}
   	}
-	console.log($scope.Sdata)
-		for(var i=0;i<$scope.Sdata.length;i++){
-			if($scope.Sdata[i].status==0){
-				$scope.jiejue="解决"
-				}
-			 if($scope.Sdata[i].status==1){
-				$scope.jiejue="已解决"				
-			}
-			if($scope.Sdata[i].status==2){
-				$scope.jiejue="已关闭"				
-			}
-		}
+		
   })
 
 }])
