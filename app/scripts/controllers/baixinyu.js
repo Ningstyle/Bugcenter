@@ -2,6 +2,9 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
 	$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
     $scope.data = [300, 500, 100];
     $scope.u=sessionStorage.getItem("Busername")
+    if(!$scope.u){
+    	$state.go('/login')
+    }
     $scope.jiejue=''
     $scope.fn=function(e){
     	$http({
@@ -22,7 +25,7 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     	method:'get',
     	params:{to:$scope.u}
     }).success(function(e){
-    	debugger
+//  	debugger
     	$scope.data1=e 
     	for(var i=0;i<$scope.data1.length;i++){
     		if($scope.data1[i].importance==0){
