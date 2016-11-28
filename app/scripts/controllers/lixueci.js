@@ -1,12 +1,4 @@
-angular.module("bugcenterApp").filter('f',function(){
-					return function(a,page,size){
-						if(a!=undefined){
-							var start=page*size
-							var end=(page+1)*size
-							return a.slice(start,end)
-						}
-					}
-				}).controller("Lx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
+angular.module("bugcenterApp").controller("Lx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   	$scope.series = ['Series A', 'Series B'];
   	$scope.data = [
@@ -35,15 +27,15 @@ angular.module("bugcenterApp").filter('f',function(){
       ]
     }
   }
-  $scope.u=sessionStorage.getItem('Busername')
-  if(!$scope.u){
+$scope.Lxuser = sessionStorage.getItem("Lusername")
+  if(!$scope.Lxuser){
   	$state.go('/login')
   }
   	$scope.s=0
 	$scope.Shang=function(e){
 			$scope.s=e
 	}
-$scope.Lxuser = sessionStorage.getItem("Lusername")
+
 
 $scope.fn=function(e){
 	$http({
@@ -55,7 +47,7 @@ $scope.fn=function(e){
 })
 }
 	
-$scope.Quit=function(){
+$scope.Quit1=function(){
 	sessionStorage.clear()
 	$state.go('/login')
 }
