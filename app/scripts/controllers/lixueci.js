@@ -6,7 +6,7 @@ angular.module("bugcenterApp").filter('f',function(){
 							return a.slice(start,end)
 						}
 					}
-				}).controller("Lx",["$rootScope","$scope","$http","$interval",function($rootScope,$scope,$http,$interval){
+				}).controller("Lx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   	$scope.series = ['Series A', 'Series B'];
   	$scope.data = [
@@ -35,6 +35,10 @@ angular.module("bugcenterApp").filter('f',function(){
       ]
     }
   }
+  $scope.u=sessionStorage.getItem('Busername')
+  if(!$scope.u){
+  	$state.go('/login')
+  }
   	$scope.s=0
 	$scope.Shang=function(e){
 			$scope.s=e
@@ -50,11 +54,12 @@ $scope.fn=function(e){
 	
 })
 }
+	
 $scope.Quit=function(){
 	sessionStorage.clear()
 	$state.go('/login')
 }
-//$scope.Lxipm="Lxred"
+$scope.Lxipm="Lxred"
   $http({
   	url:"http://www.bugcenter.com.cn:1511/item",
   	method:"get",
@@ -107,10 +112,14 @@ $scope.Quit=function(){
 //		
 //	}
   })
-//var totalpage,pagesize,cpage,count;
-//cpage = 1; //所在的页数
+//var totalpage,pagesize,cpage,count,curcount,outstr,num; 
+////初始化 
+//				cpage = 1; //所在的页数
+//				totalpage = 6;    //总页
+//				pagesize = 5; //初始化，每页显示10个
+//				outstr = ""; 
 //				num=data.length;
-//				setpage();
+//				setpage(); 
 //function gotopage(target)    
 //	{     
 //	    cpage = target;        //把页面计数定位到第几页 
@@ -166,7 +175,7 @@ $scope.Quit=function(){
 //		            +(cpage+1)+")'>下一页</a><a href='javascript:void(0)' onclick='gotopage("+(parseInt(totalpage/3)*3+1)+")'> 末页 </a>"; 
 //		        } 
 //		    }     
-//		    document.getElementById("butt").innerHTML = "<span id='info'>共"+num+"条数据,"+totalpage+"页|第"+cpage+"页<\/span>" + outstr+"<input type='text' class='text'><button class='jump' onclick='jump(this)'>跳转到</button>"; 
+//		    document.getElementById("butt").innerHTML = "<span id='info'>共"+num+"条数据,"+totalpage+"页|第"+cpage+"页<\/span>" + outstr; 
 //		    outstr = ""; 
 //		} 
 

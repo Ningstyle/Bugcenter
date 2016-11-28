@@ -208,4 +208,17 @@ font-size:0.75rem;
 		    background:#DFF9F8; 
 		    margin:1px; 
 		    color:#27CBC7; 
+} 
+#info{ 
+		    border:1px solid #DDD; 
+		    background:#F2F2F2; 
+		    display:inline-block; 
+		    margin:1px; 
+		    text-decoration:none; 
+		    font-size:20px; 
+		    width:auto; 
+		    text-align:center; 
+		    line-height:26px; 
+		    color:#AAA; 
+		    padding:1px 10px; 
 		} 
