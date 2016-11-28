@@ -9,17 +9,35 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 	$scope.Jue=["Ui设计","前端","后台"]
 	$scope.Fabu="Fabu"
 	$scope.Motai="Motai"
-	$scope.userName = []
+	// $scope.userName = []
 	//默认已指派
 	$scope.status =0
 	$scope.FabuLn = function(){
 		$scope.Fabu="Fabu1"
 	}
+	$scope.userName=[]
 	//声明空对象
 	$scope.uesrifm = {}
 	//判断bug分类（ui设计、前端、后台）
 	$scope.fn = function(index){
-		$scope.uesrifm.classify=index
+		$http({
+			url:"http://www.bugcenter.com.cn:1511/users",
+			method:"get"
+		}).success(function(e){
+			if(index==0){
+				for(var i = 0;i<e.length;i++){
+					if(e[i].charactor==0){
+						// $scope.userName="null"
+						$scope.userName.push(e[i])
+						// $scope.Users=$scope.userName[0].username
+						console.log($scope.userName)
+					}
+				}
+			}
+			console.log(e)
+		})
+		
+		
 	}
 
 	//点击发布判断bug频率（偶尔、经常）
@@ -105,11 +123,11 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 		method:"get",
 	}).success(function(e){
 		//过滤测试人员获取所有其他用户
-		for(var i =0;i<e.length;i++){
-			if(e[i].charactor!=3){
-				$scope.userName.push(e[i].username)
-			}
-		}
+		// for(var i =0;i<e.length;i++){
+		// 	if(e[i].charactor!=3){
+		// 		$scope.userName.push(e[i].username)
+		// 	}
+		// }
 		$http({
 			url:"http://www.bugcenter.com.cn:1511/item",
 			method:"get",
@@ -127,7 +145,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 						e[i].importance="一般"
 					}
 
-					$scope.myHtml=$scope.bugtext=e[i].description
+					$scope.bugtext=e[i].description
 					$scope.buglist.push(e[i])
 
 				}else if(e[i].status==0){
@@ -140,7 +158,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.myHtml=$scope.bugtext1=e[i].description
+					$scope.bugtext1=e[i].description
 					$scope.buglist1.push(e[i])
 				}else if(e[i].status==2){
 					if(e[i].importance==0){
@@ -152,11 +170,10 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.myHtml=$scope.bugtext2=e[i].description
+					$scope.bugtext2=e[i].description
 					$scope.buglist2.push(e[i])
 				}
 			}
-			console.log($scope.buglist)
 		})
 			
 	})
