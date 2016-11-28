@@ -75,40 +75,40 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 		console.log(e)
 	})
 
-var num=0;
-$http({
-    url:'http://www.bugcenter.com.cn:1511/item',
-    method:"GET",
-    params:{"$skip":num,"$limit":6}
-}).success(function(e){
-    $scope.data=e
+// var num=0;
+// $http({
+//     url:'http://www.bugcenter.com.cn:1511/item',
+//     method:"GET",
+//     params:{"$skip":num,"$limit":6}
+// }).success(function(e){
+//     $scope.data=e
    
     
-});
+// });
 
-$scope.next=function(){
-    num+=3;
-    $http({
-      url:'http://www.bugcenter.com.cn:1511/item',
-      method:"GET",
-      params:{"$skip":num,"$limit":3}
-    }).success(function(e){
-      $scope.data=e
+// $scope.next=function(){
+//     num+=3;
+//     $http({
+//       url:'http://www.bugcenter.com.cn:1511/item',
+//       method:"GET",
+//       params:{"$skip":num,"$limit":3}
+//     }).success(function(e){
+//       $scope.data=e
      
     
-    })
-}
-$scope.shang=function(){
-    num-=3;
-    $http({
-      url:'http://www.bugcenter.com.cn:1511/item',
-      method:"GET",
-      params:{"$skip":num,"$limit":3}
-    }).success(function(e){
-      $scope.data=e
+//     })
+// }
+// $scope.shang=function(){
+//     num-=3;
+//     $http({
+//       url:'http://www.bugcenter.com.cn:1511/item',
+//       method:"GET",
+//       params:{"$skip":num,"$limit":3}
+//     }).success(function(e){
+//       $scope.data=e
     
-    })
-}
+//     })
+// }
 $scope.Sout = function(){
 	sessionStorage.clear()
 	$state.go("/login")
