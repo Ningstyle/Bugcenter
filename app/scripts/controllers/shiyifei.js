@@ -30,10 +30,11 @@ angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$
 		method:"get",
 		params:{to:$scope.user}
 	}).success(function(e){
+		// var Sspan=document.getElementByClassName("s_span");
 		$scope.Sdata = e
 		for(var i=0;i<e.length;i++){
 			if(e[i].importance==0){
-				
+				// this.Sspan.style.background="red"
 				e[i].importance="重要"
 			}else if(e[i].importance==1){
 				e[i].importance="中等"
@@ -41,17 +42,29 @@ angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$
 				e[i].importance="一般"
 			}
 		}
+		// var Sspan=document.getElementsByClassName('s_span');
+		
+  //       if(Sspan.innerHTML=="重要"){
+  //         Sspan.style.background="red"
+  //       }
+		for(var i=0;i<e.length;i++){
+			if(e[i].frequency==0){
+				
+				e[i].frequency="偶尔"
+			}else if(e[i].frequency==1){
+				e[i].frequency="经常"
+			}
+		}
 		console.log($scope.Sdata)
-		for(var i=0;i<$scope.Sdata.length;i++){
-			if($scope.Sdata[i].status==0){
-				$scope.jiejue="解决"
-				}
-			 if($scope.Sdata[i].status==1){
-				$scope.jiejue="已解决"				
+		for(var i=0;i<e.length;i++){
+			if(e[i].status==0){
+				e[i].status="解决"
+			}else if(e[i].status==1){
+				e[i].status="已解决"
+			}else if(e[i].status==2){
+				e[i].status="已关闭"
 			}
-			if($scope.Sdata[i].status==2){
-				$scope.jiejue="已关闭"				
-			}
+			
 		}
 	})
 	$http({
