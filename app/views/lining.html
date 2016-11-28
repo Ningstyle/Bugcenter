@@ -78,7 +78,7 @@
 								bug详情：
 							</div>
 							<div class="bugright">
-								{{x.description}}
+							 	<x ng-bind-html="x.description|MyHtml"></x>
 							</div>
 						</li>
 						<li>
@@ -136,7 +136,7 @@
 								bug详情：
 							</div>
 							<div class="bugright">
-								{{x.description}}
+								<x ng-bind-html="x.description|MyHtml"></x>
 							</div>
 						</li>
 						<li>
@@ -155,7 +155,7 @@
 								{{x.date}}
 							</div>
 						</li>
-						<button ng-class="bugguanbi" ng-click="Fnout(x)" ng-disabled="bugg">{{gunabi}}</button>
+						<button ng-class="bugguanbi" ng-click="Fnout(x.id)" ng-disabled="bugg">{{gunabi}}</button>
 					</ul>
      			 </div>
    			 </div>
@@ -195,7 +195,7 @@
 								bug详情：
 							</div>
 							<div class="bugright">
-								{{x.description}}
+								<x ng-bind-html="x.description|MyHtml"></x>
 							</div>
 						</li>
 						<li>
@@ -252,7 +252,7 @@
 		<text-angular ng-model="text1" class="Text"></text-angular>
 	</div>
 	<div class="Lhk">
-		<p>Bug来自：</p>
+		<p>指派给：</p>
 		<select class="form-control" ng-model="Users">
 			<option ng-repeat="x in userName">{{x}}</option>
 		</select>
@@ -264,7 +264,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 

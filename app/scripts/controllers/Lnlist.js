@@ -21,6 +21,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 	$scope.fn = function(index){
 		$scope.uesrifm.classify=index
 	}
+
 	//点击发布判断bug频率（偶尔、经常）
 	$scope.Submit = function(){
 		if($scope.jinc=="偶尔"){
@@ -88,14 +89,12 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					$scope.Motai="Motai"
 				},1500)
 				// $scope.uesrifm=""
-				console.log($scope.uesrifm)
+				// console.log($scope.userifm)
+				console.log(e)
+				console.log($scope.buglist2)
 			})
 		}
 		
-	}
-
-	$scope.back = function(){
-		$scope.Fabu="Fabu"
 	}
 	$scope.buglist = []
 	$scope.buglist1 = []
@@ -111,7 +110,6 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 				$scope.userName.push(e[i].username)
 			}
 		}
-		
 		$http({
 			url:"http://www.bugcenter.com.cn:1511/item",
 			method:"get",
@@ -128,7 +126,8 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.bugtext=e[i].description
+
+					$scope.myHtml=$scope.bugtext=e[i].description
 					$scope.buglist.push(e[i])
 
 				}else if(e[i].status==0){
@@ -141,7 +140,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.bugtext1=e[i].description
+					$scope.myHtml=$scope.bugtext1=e[i].description
 					$scope.buglist1.push(e[i])
 				}else if(e[i].status==2){
 					if(e[i].importance==0){
@@ -153,7 +152,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.bugtext2=e[i].description
+					$scope.myHtml=$scope.bugtext2=e[i].description
 					$scope.buglist2.push(e[i])
 				}
 			}
@@ -166,7 +165,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 	$scope.bugg=false
 	$scope.Fnout = function(x){
 		$http({
-			url:"http://www.bugcenter.com.cn:1511/item/"+x.id,
+			url:"http://www.bugcenter.com.cn:1511/item/"+x,
 			method:"put",
 			data:{"status":2}
 		}).success(function(e){
@@ -175,11 +174,14 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 			$timeout(function(){
 				$scope.Motai="Motai"
 			},1500)
-			console.log(x)
+			console.log($scope.uesrifm)
 			// window.location.reload()
 		})
 	}
-
+	$scope.back = function(){
+		$scope.Fabu="Fabu"
+	}
+	
 
 	//图表信息
 	$scope.labels = $scope.userName
