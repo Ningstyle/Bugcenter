@@ -9,15 +9,7 @@
     	<b>Bugcenter</b>
     	v0.0.1
     	(测试专用)
-            <div class="LPosi">
-            	<div class="Lsearch">
-            	<div class="Lsearch1" id="Lndiv1">
-            		<input type="text" id="Lninp">
-            		<a href="javascript:;"class="glyphicon glyphicon-search" id="Lnsearch"></a>
-            		<span class="glyphicon glyphicon-remove" id="Lx"></span>
-            	</div>
-            </div>
-            </div>
+    	<a href="javascript:;" class="glyphicon glyphicon-off"  id="Lnt" title="退出登录" ng-click="Outfn()"></a>
 		</div>
 	</div>
 </div>
@@ -254,7 +246,7 @@
 	<div class="Lhk">
 		<p>指派给：</p>
 		<select class="form-control" ng-model="Users">
-			<option ng-repeat="x in userName">{{x.userName}}</option>
+			<option ng-repeat="x in userName">{{x}}</option>
 		</select>
 	</div>
 	<div class="Lhk">
@@ -302,52 +294,7 @@
 
 
 <script>
-	$(function(){
-	    $("#Lnsearch").click(function(){
-	        $("#Lndiv1").css({"width":"100%"})
-	        $("#Lninp").animate({
-	          "width": "85%",
-	          "paddingLeft":"1rem",
-	        },
-	          400, function() {
-	          $("#Lninp").css({
-	            "border":"0.025rem solid #fff"
-	          })
-	        });
-	        $(this).animate({
-	          "right": "2.5rem",
-	          "borderRadius": "50%",
-	        },
-	          200, function() {
-	            $("#Lx").animate({
-	              "right":"-0.5rem",
-	              "zIndex":'0'
-	            },100)
-	        });
-	    })
-	    $("#Lx").click(function(){
-	       $("#Lninp").animate({
-	          "width": "0rem",
-	          "paddingLeft":"0rem",
-	        },
-	          400, function() {
-	             $("#Lninp").css({
-	            "border":"none"
-	          })
-	        });
-	       $(this).animate({
-	          "right":"1rem",
-	          "zIndex":'-1'
-	       },200,function(){
-	         $("#Lndiv1").animate({
-	           "width":"3rem"},
-	           400);
-	         $("#Lnsearch").css({
-	          "borderRadius":"0.4rem",
-	          "right":"0"
-	         })
-	       })
-	    })
+	$(function(){ 
 	    $("#Listleft li").click(function(){
 	    	$(this).addClass("Listleftli").siblings().removeClass("Listleftli")
 	    })
