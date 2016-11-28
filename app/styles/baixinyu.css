@@ -75,6 +75,24 @@ body{
 }
 
 
+.red{
+	background: red;
+    width: 2rem;
+    height: 0.8rem;
+    display: inline-block;
+}
+.green{
+	background: green;
+	width: 2rem;
+    height: 0.8rem;
+    display: inline-block
+}
+.blue{
+	background: blue;
+	width: 2rem;
+    height: 0.8rem;
+    display: inline-block
+}
 
 
 
