@@ -63,6 +63,18 @@ $scope.Lxuser = sessionStorage.getItem("Lusername")
   			e[i].frequency="经常"
   		}
   	}
+	console.log($scope.Sdata)
+		for(var i=0;i<$scope.Sdata.length;i++){
+			if($scope.Sdata[i].status==0){
+				$scope.jiejue="解决"
+				}
+			 if($scope.Sdata[i].status==1){
+				$scope.jiejue="已解决"				
+			}
+			if($scope.Sdata[i].status==2){
+				$scope.jiejue="已关闭"				
+			}
+		}
   })
   $scope.jue=function(x){
   	console.log(x)
