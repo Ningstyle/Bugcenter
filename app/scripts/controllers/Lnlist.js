@@ -1,43 +1,54 @@
 
-angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$interval","$timeout",function($rootScope,$scope,$http,$interval,$timeout){
+angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.dataname=["Ui设计","前端","后台"]
 	$scope.frequency=["偶尔","经常"]
 	$scope.importance =["重要","中等","一般"]
 	$scope.jinc="偶尔"
 	$scope.imp = "重要"
-	$scope.Users = "lnn"
 	$scope.Jue=["Ui设计","前端","后台"]
 	$scope.Fabu="Fabu"
 	$scope.Motai="Motai"
-	// $scope.userName = []
+	$scope.userName = []
 	//默认已指派
 	$scope.status =0
 	$scope.FabuLn = function(){
 		$scope.Fabu="Fabu1"
 	}
-	$scope.userName=[]
 	//声明空对象
 	$scope.uesrifm = {}
 	//判断bug分类（ui设计、前端、后台）
 	$scope.fn = function(index){
+		$scope.uesrifm.classify=index
 		$http({
 			url:"http://www.bugcenter.com.cn:1511/users",
-			method:"get"
+			method:"get",
 		}).success(function(e){
 			if(index==0){
-				for(var i = 0;i<e.length;i++){
+				$scope.userName.length=0
+				for(var i =0;i<e.length;i++){
 					if(e[i].charactor==0){
-						// $scope.userName="null"
-						$scope.userName.push(e[i])
-						// $scope.Users=$scope.userName[0].username
-						console.log($scope.userName)
+						$scope.userName.push(e[i].username)
+						$scope.Users = $scope.userName[0]
+					}
+				}
+			}else if(index==1){
+				$scope.userName.length=0
+				for(var i =0;i<e.length;i++){
+					if(e[i].charactor==1){
+						$scope.userName.push(e[i].username)
+						$scope.Users = $scope.userName[0]
+					}
+				}
+			}else if(index==2){
+				$scope.userName.length=0
+				for(var i =0;i<e.length;i++){
+					if(e[i].charactor==2){
+						$scope.userName.push(e[i].username)
+						$scope.Users = $scope.userName[0]
 					}
 				}
 			}
-			console.log(e)
 		})
-		
-		
 	}
 
 	//点击发布判断bug频率（偶尔、经常）
@@ -106,10 +117,14 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 				$timeout(function(){
 					$scope.Motai="Motai"
 				},1500)
+				$scope.jinc="偶尔"
+				$scope.imp="重要"
+				$scope.Textarea=""
+				$scope.text1=""
 				// $scope.uesrifm=""
 				// console.log($scope.userifm)
-				console.log(e)
-				console.log($scope.buglist2)
+				// console.log(e)
+				// console.log($scope.buglist2)
 			})
 		}
 		
@@ -158,7 +173,7 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.bugtext1=e[i].description
+					$scope.myHtml=$scope.bugtext1=e[i].description
 					$scope.buglist1.push(e[i])
 				}else if(e[i].status==2){
 					if(e[i].importance==0){
@@ -170,10 +185,11 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 					if(e[i].importance==2){
 						e[i].importance="一般"
 					}
-					$scope.bugtext2=e[i].description
+					$scope.myHtml=$scope.bugtext2=e[i].description
 					$scope.buglist2.push(e[i])
 				}
 			}
+			// console.log($scope.buglist)
 		})
 			
 	})
@@ -198,8 +214,15 @@ angular.module("bugcenterApp").controller("Ln",["$rootScope","$scope","$http","$
 	$scope.back = function(){
 		$scope.Fabu="Fabu"
 	}
-	
-
+	//退出登录
+	$scope.Outfn = function(){
+		sessionStorage.clear()
+		$state.go("/login")
+	}
+	//判断是否已登录账号
+	if(!sessionStorage.getItem("username")){
+		$state.go("/login")
+	}
 	//图表信息
 	$scope.labels = $scope.userName
 	$scope.series = ['Bug总数', '已解决','未解决'];
