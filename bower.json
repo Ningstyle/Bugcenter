@@ -5,9 +5,9 @@
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",
     "angular-ui-router": "^0.3.2",
+    "angular-sanitize": "^1.5.9",
     "textAngular": "^1.5.13",
     "angular-chart.js": "^1.0.3",
-    "angular-sanitize": "^1.5.9",
     "angular-cookies": "^1.5.9"
   },
   "devDependencies": {
