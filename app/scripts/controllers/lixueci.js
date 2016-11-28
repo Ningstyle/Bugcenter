@@ -76,12 +76,6 @@ $scope.Lxuser = sessionStorage.getItem("Lusername")
 			}
 		}
   })
-  $scope.jue=function(x){
-  	console.log(x)
-		$http({
-			url:"http://www.bugcenter.com.cn:1511/item"/+x,
-  			method:"put",
-		})
-	}
+
 }])
 	
