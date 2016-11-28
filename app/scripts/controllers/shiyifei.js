@@ -1,4 +1,4 @@
-angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$interval","$timeout",function($rootScope,$scope,$http,$interval,$timeout){
+angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
 	$scope.series = ['Series A', 'Series B'];
 	$scope.data = [
@@ -109,7 +109,12 @@ $scope.shang=function(){
     
     })
 }
-
-
+$scope.Sout = function(){
+	sessionStorage.clear()
+	$state.go("/login")
+}
+if(!$scope.user){
+	$state.go("/login")
+}
 }])
 	
