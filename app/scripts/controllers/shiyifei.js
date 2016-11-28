@@ -36,6 +36,7 @@ angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$
 			if(e[i].importance==0){
 				// this.Sspan.style.background="red"
 				e[i].importance="重要"
+
 			}else if(e[i].importance==1){
 				e[i].importance="中等"
 			}else if(e[i].importance==2){
@@ -73,6 +74,42 @@ angular.module("bugcenterApp").controller("Sy",["$rootScope","$scope","$http","$
 	}).success(function(e){
 		console.log(e)
 	})
+
+var num=0;
+$http({
+    url:'http://www.bugcenter.com.cn:1511/item',
+    method:"GET",
+    params:{"$skip":num,"$limit":6}
+}).success(function(e){
+    $scope.data=e
+   
+    
+});
+
+$scope.next=function(){
+    num+=3;
+    $http({
+      url:'http://www.bugcenter.com.cn:1511/item',
+      method:"GET",
+      params:{"$skip":num,"$limit":3}
+    }).success(function(e){
+      $scope.data=e
+     
+    
+    })
+}
+$scope.shang=function(){
+    num-=3;
+    $http({
+      url:'http://www.bugcenter.com.cn:1511/item',
+      method:"GET",
+      params:{"$skip":num,"$limit":3}
+    }).success(function(e){
+      $scope.data=e
+    
+    })
+}
+
 
 }])
 	
