@@ -1,4 +1,12 @@
-angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
+angular.module("bugcenterApp").filter('f',function(){
+					return function(a,page,size){
+						if(a!=undefined){
+							var start=page*size
+							var end=(page+1)*size
+							return a.slice(start,end)
+						}
+					}
+				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
 	$scope.series = ['Series A', 'Series B'];
 	$scope.data = [
@@ -23,6 +31,11 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 			data:{status:1}
 		})
 	}
+	$scope.s=0
+	$scope.Fn=function(e){
+		$scope.s=e
+	}
+
 	$scope.user =sessionStorage.Susername
 	// $scope.jiejue="解决"
 	$http({
