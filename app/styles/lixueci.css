@@ -1,4 +1,3 @@
-
 body{
 	background:#eee;
 }
@@ -35,7 +34,7 @@ font-size:0.75rem;
 	background:rgba(51,51,51,0.95);
 	position: absolute;
 	left:-6rem;
-	z-index:9999;
+	z-index:999;
 }
 .lxc_posi a{
 	text-decoration:none;
@@ -204,3 +203,22 @@ font-size:0.75rem;
 .Lxdatatw{
 	float:right;
 }
+.current{ 
+		    border:1px solid #83E7E4; 
+		    background:#DFF9F8; 
+		    margin:1px; 
+		    color:#27CBC7; 
+} 
+#info{ 
+		    border:1px solid #DDD; 
+		    background:#F2F2F2; 
+		    display:inline-block; 
+		    margin:1px; 
+		    text-decoration:none; 
+		    font-size:20px; 
+		    width:auto; 
+		    text-align:center; 
+		    line-height:26px; 
+		    color:#AAA; 
+		    padding:1px 10px; 
+		} 

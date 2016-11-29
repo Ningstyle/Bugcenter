@@ -17,13 +17,22 @@
 	<div>
 		Bug一览：
 	</div>
-	<li class="Listleftli">折线图</li>
+	<li class="Listleftli">条形图</li>
 	<li>柱状图</li>
 	<li>饼图</li>
 	<li>雷达图</li>
 </div>
-<div class="canvas">
-	<canvas class="chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+<div class="canvas" style="display:block">
+	<canvas class="chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+</div>
+<div class="canvas" style="display:none">
+	<canvas class="chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+</div>
+<div class="canvas" style="display:none">
+	<canvas class="chart-pie" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
+</div>
+<div class="canvas" style="display:none">
+	<canvas class="chart-radar" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick" id="Canvas"></canvas> 
 </div>
 <!-- <div class="Bugxq" ng-repeat="x in userName">
 	<div class="Lnjian">{{x}}</div>
@@ -41,7 +50,7 @@
     		<div class="panel-heading" role="tab" id="headingOne">
       			<h4 class="panel-title">
         			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-         				 已关闭Bug列表
+         				 已关闭Bug列表({{buglist2.length}})
         			</b>
      			 </h4>
     		</div>
@@ -99,7 +108,7 @@
     		<div class="panel-heading" role="tab" id="headingThree">
       			<h4 class="panel-title">
         			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-         				 未关闭Bug列表
+         				 未关闭Bug列表({{buglist.length}})
         			</b>
      			 </h4>
     		</div>
@@ -158,7 +167,7 @@
     		<div class="panel-heading" role="tab" id="headingFour">
       			<h4 class="panel-title">
         			<b class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-         				 未处理Bug列表
+         				 未处理Bug列表({{buglist1.length}})
         			</b>
      			 </h4>
     		</div>
@@ -294,6 +303,18 @@
 
 
 <script>
+	var oDiv = document.getElementById("Listleft")
+	var aLi = oDiv.getElementsByTagName("li")
+	var aDiv = document.getElementsByClassName("canvas")
+	for(var i =0;i<aLi.length;i++){
+		aLi[i].index = i
+		aLi[i].onclick = function(){
+			for(var i =0;i<aDiv.length;i++){
+				aDiv[i].style.display = 'none'
+			}
+			aDiv[this.index].style.display="block"
+		}
+	}
 	$(function(){ 
 	    $("#Listleft li").click(function(){
 	    	$(this).addClass("Listleftli").siblings().removeClass("Listleftli")
