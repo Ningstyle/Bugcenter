@@ -1,6 +1,5 @@
 angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
 	$scope.labels = ["重要", "中等", "M一般"];
-
     $scope.u=sessionStorage.getItem("Busername")
     if(!$scope.u){
     	$state.go('/login')
@@ -30,8 +29,7 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     }).success(function(e){
 //  	debugger
     	$scope.data1=e 
-    	console.log(e)
-    	
+    	$scope.datalen=e.length
     	
     	for(var i=0;i<$scope.data1.length;i++){
     		if($scope.data1[i].importance==0){
@@ -66,10 +64,54 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     		}
     		
     	}
-    })
+    	
+    $scope.size=5;
+	$scope.s=0;
+	$scope.Le = Math.ceil($scope.datalen/$scope.size)
+	console.log($scope.Le)
+//	console.log($scope.datalen)
+	$scope.Fn=function(){
+		$scope.s--
+		if($scope.s<0){
+			$scope.s=0
+		}
+	}
+	$scope.Fn1=function(e){
+		$scope.s++
+		if($scope.s>$scope.Le-1){
+			$scope.s=$scope.Le-1
+		}
+	}
+ })
+  $scope.Lns = true
+  $scope.Lns1 = true
+  $scope.aaa=''
+	$scope.$watch("aaa",function(e){
+		if($scope.aaa!=""){
+			$scope.Lns = false
+			$scope.Lns1 = false
+			$scope.size=999999999999999
+		}else{
+			$scope.Lns = true
+			$scope.Lns1 = true
+			$scope.size=5
+		}
+	})
+
+
+    
     
     
 }])
+.filter('f',function(){
+	return function(a,page,size){
+		if(a!=undefined){
+			var start=page*size
+			var end=(page+1)*size
+			return a.slice(start,end)
+		}
+	}
+})
 	
 
 
