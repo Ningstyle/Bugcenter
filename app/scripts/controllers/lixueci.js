@@ -63,9 +63,7 @@ $scope.Lxipm="Lxred"
   }).success(function(e){
   	$scope.data1=e
   	$scope.datalen=e.length
-  	for(var i=0;i<e.length;i++){
   	
-  	}
   	for(var i=0;i<e.length;i++){
 			if(e[i].status==0){
 				e[i].status="解决"
@@ -123,6 +121,21 @@ $scope.Lxipm="Lxred"
 		}
 	}
  })
-	
+  $scope.Lns = true
+  $scope.Lns1 = true
+  $scope.aaa=''
+	$scope.$watch("aaa",function(e){
+		console.log(e)
+		if($scope.aaa!=""){
+			$scope.Lns = false
+			$scope.Lns1 = false
+			$scope.size=999999999999999
+		}else{
+			$scope.Lns = true
+			$scope.Lns1 = true
+			$scope.size=5
+		}
+		console.log($scope.aaa)
+	})
 }])
 	
