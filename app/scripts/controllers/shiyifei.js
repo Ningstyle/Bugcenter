@@ -1,4 +1,12 @@
-angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
+angular.module("bugcenterApp").filter('f',function(){
+					return function(a,page,size){
+						if(a!=undefined){
+							var start=page*size
+							var end=(page+1)*size
+							return a.slice(start,end)
+						}
+					}
+				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
 	$scope.series = ['Series A', 'Series B'];
 	$scope.data = [
@@ -23,6 +31,7 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 			data:{status:1}
 		})
 	}
+	$scope.datalen=0
 	$scope.user =sessionStorage.Susername
 	// $scope.jiejue="解决"
 	$http({
@@ -32,6 +41,7 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 	}).success(function(e){
 		// var Sspan=document.getElementByClassName("s_span");
 		$scope.Sdata = e
+		$scope.datalen=e.length
 		for(var i=0;i<e.length;i++){
 			if(e[i].importance==0){
 				// this.Sspan.style.background="red"
@@ -43,11 +53,7 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 				e[i].importance="一般"
 			}
 		}
-		// var Sspan=document.getElementsByClassName('s_span');
 		
-  //       if(Sspan.innerHTML=="重要"){
-  //         Sspan.style.background="red"
-  //       }
 		for(var i=0;i<e.length;i++){
 			if(e[i].frequency==0){
 				
@@ -67,6 +73,39 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 			}
 			
 		}
+	$scope.size=5;
+	$scope.s=0;
+	$scope.Le= Math.ceil($scope.datalen/$scope.size)
+	console.log($scope.Le)
+//	console.log($scope.datalen)
+	$scope.Fn=function(){
+		$scope.s--
+		if($scope.s<0){
+			$scope.s=0
+		}
+	}
+	$scope.Fn1=function(e){
+		$scope.s++
+		if($scope.s>$scope.Le-1){
+			$scope.s=$scope.Le-1
+		}
+	}
+ })
+ $scope.Lns = true
+  $scope.Lns1 = true
+  $scope.aaaa=''
+	$scope.$watch("aaaa",function(e){
+		console.log(e)
+		if($scope.aaaa!=""){
+			$scope.Lns = false
+			$scope.Lns1 = false
+			$scope.size=999999999999999
+		}else{
+			$scope.Lns = true
+			$scope.Lns1 = true
+			$scope.size=5
+		}
+		console.log($scope.aaa)
 	})
 	$http({
 		url:"http://www.bugcenter.com.cn:1511/item",
@@ -74,47 +113,12 @@ angular.module("bugcenterApp").controller("Sy",["$state","$rootScope","$scope","
 	}).success(function(e){
 		console.log(e)
 	})
-
-// var num=0;
-// $http({
-//     url:'http://www.bugcenter.com.cn:1511/item',
-//     method:"GET",
-//     params:{"$skip":num,"$limit":6}
-// }).success(function(e){
-//     $scope.data=e
-   
-    
-// });
-
-// $scope.next=function(){
-//     num+=3;
-//     $http({
-//       url:'http://www.bugcenter.com.cn:1511/item',
-//       method:"GET",
-//       params:{"$skip":num,"$limit":3}
-//     }).success(function(e){
-//       $scope.data=e
-     
-    
-//     })
-// }
-// $scope.shang=function(){
-//     num-=3;
-//     $http({
-//       url:'http://www.bugcenter.com.cn:1511/item',
-//       method:"GET",
-//       params:{"$skip":num,"$limit":3}
-//     }).success(function(e){
-//       $scope.data=e
-    
-//     })
-// }
-$scope.Sout = function(){
-	sessionStorage.clear()
-	$state.go("/login")
-}
-if(!$scope.user){
-	$state.go("/login")
-}
+	$scope.Sout = function(){
+		sessionStorage.clear()
+		$state.go("/login")
+	}
+	if(!$scope.user){
+		$state.go("/login")
+	}
 }])
 	
