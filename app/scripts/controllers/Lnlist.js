@@ -7,8 +7,10 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 	$scope.imp = "重要"
 	$scope.Jue=["Ui设计","前端","后台"]
 	$scope.Fabu="Fabu"
+	$scope.Users = "lnn"
 	$scope.Motai="Motai"
 	$scope.userName = []
+	$scope.userName1 = []
 	//默认已指派
 	$scope.status =0
 	$scope.FabuLn = function(){
@@ -129,26 +131,43 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 		}
 		
 	}
+	//未关闭
 	$scope.buglist = []
+	//未处理
 	$scope.buglist1 = []
+	//已关闭
 	$scope.buglist2 = []
+	//存放图表数据
+	$scope.tudata = []
+	$scope.tudata1 = []
+	$scope.tudata2 = []
 	//获取所有用户
 	$http({
 		url:"http://www.bugcenter.com.cn:1511/users",
 		method:"get",
 	}).success(function(e){
-		//过滤测试人员获取所有其他用户
-		// for(var i =0;i<e.length;i++){
-		// 	if(e[i].charactor!=3){
-		// 		$scope.userName.push(e[i].username)
-		// 	}
-		// }
+		// 过滤测试人员获取所有其他用户
+		for(var i =0;i<e.length;i++){
+			if(e[i].charactor!=3){
+				$scope.userName.push(e[i].username)
+				$scope.userName1.push(e[i].username)
+			}
+		}
 		$http({
 			url:"http://www.bugcenter.com.cn:1511/item",
 			method:"get",
 			// params:{"to":$scope.userName}
 		}).success(function(e){
 			for(var i = 0;i<e.length;i++){
+				if(e[i].importance==0||e[i].importance=="重要"){
+					$scope.tudata.push(e[i])
+				}
+				if(e[i].importance==1||e[i].importance=="中等"){
+					$scope.tudata1.push(e[i])
+				}
+				if(e[i].importance==2||e[i].importance=="一般"){
+					$scope.tudata2.push(e[i])
+				}
 				if(e[i].status==1){
 					if(e[i].importance==0){
 						e[i].importance="重要"
@@ -189,7 +208,19 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 					$scope.buglist2.push(e[i])
 				}
 			}
-			// console.log($scope.buglist)
+			//图表信息
+			$scope.labels = ['重要','中等','一般']
+			// $scope.series = ['重要', '中等','一般'];
+			$scope.data = [$scope.tudata.length,$scope.tudata1.length,$scope.tudata2.length];
+			$scope.onClick = function (points, evt) {
+			    console.log(points, evt);
+			};
+
+			  // Simulate async data update
+			$timeout(function () {
+				$scope.labels = ['一般','中等','重要']
+			    $scope.data = [$scope.tudata2.length,$scope.tudata1.length,$scope.tudata.length];
+			}, 3000);
 		})
 			
 	})
@@ -223,25 +254,12 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 	if(!sessionStorage.getItem("username")){
 		$state.go("/login")
 	}
-	//图表信息
-	$scope.labels = $scope.userName
-	$scope.series = ['Bug总数', '已解决','未解决'];
-	$scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90],
-	    [54, 48, 21, 2, 1, 4, 53]
-	];
-	$scope.onClick = function (points, evt) {
-	    console.log(points, evt);
-	};
-
-	  // Simulate async data update
-	$timeout(function () {
-	    $scope.data = [
-	    [54, 48, 21, 2, 1, 4, 53],
-	      [28, 48, 40, 19, 86, 27, 90],
-	      [65, 59, 80, 81, 56, 55, 40]
-	    ];
-	}, 3000);
+	//判断图表数据
+	// for(var i = 0;i<$scope.buglist.length;i++){
+	// 	if($scope.buglist[i]=="0"){
+	// 		$scope.tudata.push($scope.buglist[i])
+	// 		console.log($scope.tudata)
+	// 	}
+	// }
 }])
 	
