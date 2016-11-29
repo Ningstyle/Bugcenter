@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('bugcenterApp',["ui.router","textAngular","chart.js","syf","ngSanitize"]).config(["$stateProvider","$urlRouterProvider","ChartJsProvider",function($stateProvider,$urlRouterProvider,ChartJsProvider){
+  .module('bugcenterApp',["ui.router","textAngular","chart.js","ngSanitize"]).config(["$stateProvider","$urlRouterProvider","ChartJsProvider",function($stateProvider,$urlRouterProvider,ChartJsProvider){
         $urlRouterProvider.when("","/login"),
         $stateProvider.state("/login",{
           url:"/login",

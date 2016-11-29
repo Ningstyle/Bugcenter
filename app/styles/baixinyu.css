@@ -80,20 +80,25 @@ body{
     width: 2rem;
     height: 0.8rem;
     display: inline-block;
+    color: #fff;
 }
 .green{
 	background: green;
 	width: 2rem;
     height: 0.8rem;
-    display: inline-block
+    display: inline-block;
+    color: #fff;
 }
 .blue{
 	background: blue;
 	width: 2rem;
     height: 0.8rem;
-    display: inline-block
+    display: inline-block;
+    color: #fff;
 }
-
+.chart{
+	margin-top:0.5rem;
+}
 
 
 
