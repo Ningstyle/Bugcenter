@@ -31,11 +31,7 @@ angular.module("bugcenterApp").filter('f',function(){
 			data:{status:1}
 		})
 	}
-	$scope.s=0
-	$scope.Fn=function(e){
-		$scope.s=e
-	}
-
+	$scope.datalen=0
 	$scope.user =sessionStorage.Susername
 	// $scope.jiejue="解决"
 	$http({
@@ -45,6 +41,7 @@ angular.module("bugcenterApp").filter('f',function(){
 	}).success(function(e){
 		// var Sspan=document.getElementByClassName("s_span");
 		$scope.Sdata = e
+		$scope.datalen=e.length
 		for(var i=0;i<e.length;i++){
 			if(e[i].importance==0){
 				// this.Sspan.style.background="red"
@@ -56,11 +53,7 @@ angular.module("bugcenterApp").filter('f',function(){
 				e[i].importance="一般"
 			}
 		}
-		// var Sspan=document.getElementsByClassName('s_span');
 		
-  //       if(Sspan.innerHTML=="重要"){
-  //         Sspan.style.background="red"
-  //       }
 		for(var i=0;i<e.length;i++){
 			if(e[i].frequency==0){
 				
@@ -80,6 +73,39 @@ angular.module("bugcenterApp").filter('f',function(){
 			}
 			
 		}
+	$scope.size=5;
+	$scope.s=0;
+	$scope.Le= Math.ceil($scope.datalen/$scope.size)
+	console.log($scope.Le)
+//	console.log($scope.datalen)
+	$scope.Fn=function(){
+		$scope.s--
+		if($scope.s<0){
+			$scope.s=0
+		}
+	}
+	$scope.Fn1=function(e){
+		$scope.s++
+		if($scope.s>$scope.Le-1){
+			$scope.s=$scope.Le-1
+		}
+	}
+ })
+ $scope.Lns = true
+  $scope.Lns1 = true
+  $scope.aaaa=''
+	$scope.$watch("aaaa",function(e){
+		console.log(e)
+		if($scope.aaaa!=""){
+			$scope.Lns = false
+			$scope.Lns1 = false
+			$scope.size=999999999999999
+		}else{
+			$scope.Lns = true
+			$scope.Lns1 = true
+			$scope.size=5
+		}
+		console.log($scope.aaa)
 	})
 	$http({
 		url:"http://www.bugcenter.com.cn:1511/item",
@@ -87,47 +113,12 @@ angular.module("bugcenterApp").filter('f',function(){
 	}).success(function(e){
 		console.log(e)
 	})
-
-// var num=0;
-// $http({
-//     url:'http://www.bugcenter.com.cn:1511/item',
-//     method:"GET",
-//     params:{"$skip":num,"$limit":6}
-// }).success(function(e){
-//     $scope.data=e
-   
-    
-// });
-
-// $scope.next=function(){
-//     num+=3;
-//     $http({
-//       url:'http://www.bugcenter.com.cn:1511/item',
-//       method:"GET",
-//       params:{"$skip":num,"$limit":3}
-//     }).success(function(e){
-//       $scope.data=e
-     
-    
-//     })
-// }
-// $scope.shang=function(){
-//     num-=3;
-//     $http({
-//       url:'http://www.bugcenter.com.cn:1511/item',
-//       method:"GET",
-//       params:{"$skip":num,"$limit":3}
-//     }).success(function(e){
-//       $scope.data=e
-    
-//     })
-// }
-$scope.Sout = function(){
-	sessionStorage.clear()
-	$state.go("/login")
-}
-if(!$scope.user){
-	$state.go("/login")
-}
+	$scope.Sout = function(){
+		sessionStorage.clear()
+		$state.go("/login")
+	}
+	if(!$scope.user){
+		$state.go("/login")
+	}
 }])
 	
