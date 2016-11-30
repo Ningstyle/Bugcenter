@@ -52,7 +52,12 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 			}
 		})
 	}
-
+	//未关闭
+	$scope.buglist = []
+	//未处理
+	$scope.buglist1 = []
+	//已关闭
+	$scope.buglist2 = []
 	//点击发布判断bug频率（偶尔、经常）
 	$scope.Submit = function(){
 		if($scope.jinc=="偶尔"){
@@ -119,24 +124,16 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 				$timeout(function(){
 					$scope.Motai="Motai"
 				},1500)
+				$scope.Fabu="Fabu"
 				$scope.jinc="偶尔"
 				$scope.imp="重要"
 				$scope.Textarea=""
 				$scope.text1=""
-				// $scope.uesrifm=""
-				// console.log($scope.userifm)
-				// console.log(e)
-				// console.log($scope.buglist2)
+				$scope.buglist1.push(e)
 			})
 		}
 		
 	}
-	//未关闭
-	$scope.buglist = []
-	//未处理
-	$scope.buglist1 = []
-	//已关闭
-	$scope.buglist2 = []
 	//存放图表数据
 	$scope.tudata = []
 	$scope.tudata1 = []
@@ -227,19 +224,21 @@ angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","
 	$scope.bugguanbi="bugbutton1",
 	$scope.gunabi ="确认关闭"
 	$scope.bugg=false
-	$scope.Fnout = function(x){
+	$scope.Fnout = function(e){
 		$http({
-			url:"http://www.bugcenter.com.cn:1511/item/"+x,
+			url:"http://www.bugcenter.com.cn:1511/item/"+e.id,
 			method:"put",
 			data:{"status":2}
-		}).success(function(e){
+		}).success(function(){
 			$scope.Lntext="已关闭!"
 			$scope.Motai="Motai1"
 			$timeout(function(){
 				$scope.Motai="Motai"
 			},1500)
-			console.log($scope.uesrifm)
-			// window.location.reload()
+			console.log(e)
+			$scope.buglist.splice($scope.buglist.indexOf(e),1)
+			$scope.buglist2.push(e)
+			console.log($scope.buglist)
 		})
 	}
 	$scope.back = function(){
