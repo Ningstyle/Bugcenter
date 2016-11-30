@@ -7,7 +7,9 @@ angular.module("bugcenterApp").filter('f',function(){
 						}
 					}
 				}).controller("Lx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
+	$scope.labels = ["重要", "中等", "一般"];
 	
+  	
   	$scope.datalen=0
 $scope.Lxuser = sessionStorage.getItem("Lusername")
   if(!$scope.Lxuser){
@@ -20,10 +22,13 @@ $scope.fn=function(e){
 		method:'put',
 		data:{status:1}
 	}).success(function(){
-	
+		alert(1)
+		
 })
 }
-	
+	$scope.arr=[]
+	$scope.arr1=[]
+	$scope.arr2=[]
 $scope.Quit1=function(){
 	sessionStorage.clear()
 	$state.go('/login')
@@ -36,32 +41,38 @@ $scope.Lxipm="Lxred"
   }).success(function(e){
   	$scope.data1=e
   	$scope.datalen=e.length
-  	$scope.labels = ["重要", "中等", "一般"];
-  	$scope.data = [e.importance=0,e.importance=1,e.importance=2];
+  	
   	for(var i=0;i<e.length;i++){
 			if(e[i].status==0){
 				e[i].status="解决"
+				
 				}
 			 else if(e[i].status==1){
 				e[i].status="已解决"				
 			}
 			else if(e[i].status==2){
-				e[i].status="已关闭"				
+				e[i].status="已关闭"	
+				
 			}
 		}
-  
+  console.log(e)
   	$scope.Lxdata1 = e
   	for(var i =0;i<e.length;i++){
   		if(e[i].importance==0){
   			e[i].importance="重要"
-  			console.log(e.importance==0)
+  			$scope.arr.push(e[i].importance)
+  			
   		}else if(e[i].importance==1){
   			e[i].importance="中等"
+  			$scope.arr1.push(e[i].importance)
   		}else if(e[i].importance==2){
   			e[i].importance="一般"
+  			$scope.arr2.push(e[i].importance)
   		}
   	}
-	
+	if($scope.arr.length){
+		$scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
+	}
 	for(var j =0;j<$scope.Lxdata1.length;j++){
 		if($scope.Lxdata1[j].importance=="重要"){
 			$scope.Lxipm="Lxred"
