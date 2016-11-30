@@ -1,19 +1,11 @@
 angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
-	$scope.labels = ["重要", "中等", "M一般"];
+	$scope.labels = ["重要", "中等", "一般"];
     $scope.u=sessionStorage.getItem("Busername")
     if(!$scope.u){
     	$state.go('/login')
     }
     $scope.jiejue=''
-    $scope.fn=function(e){
-    	$http({
-    		url:'http://www.bugcenter.com.cn:1511/item/'+e,
-    		method:'put',
-    		data:{status:1}
-    	}).success(function(d){
-    		alert(1)
-    	})
-    }
+    
     $scope.arr=[]
     $scope.arr1=[]
     $scope.arr2=[]
@@ -81,6 +73,34 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
 		}
 	}
  })
+    
+//  $scope.fn=function(e){
+//  	if(){
+//  		
+//  	}
+//  	$http({
+//  		url:'http://www.bugcenter.com.cn:1511/item/'+e,
+//  		method:'put',
+//  		data:{status:1}
+//  	}).success(function(d){
+//  		alert(1)
+//  	})
+//  }
+    
+    $scope.fn=function(e){
+		if(e.status=="解决"){
+			$http({
+				url:'http://www.bugcenter.com.cn:1511/item/'+e.id,
+				method:'put',
+				data:{status:1}
+			}).success(function(){
+				$scope.data1[$scope.data1.indexOf(e)].status="已解决"
+				
+			})
+		}
+	}
+    
+    
   $scope.Lns = true
   $scope.Lns1 = true
   $scope.aaa=''
