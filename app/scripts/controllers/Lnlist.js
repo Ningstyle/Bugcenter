@@ -1,5 +1,16 @@
 
 angular.module("bugcenterApp").controller("Ln",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
+	$scope.options = {
+    height: 300,
+    focus: true,
+    airMode: false,
+    toolbar: [
+            ['fontclr', ['color']],
+            ['fontface', ['fontname']],
+            ['textsize', ['fontsize']],
+           
+        ]
+  };
 	$scope.dataname=["Ui设计","前端","后台"]
 	$scope.frequency=["偶尔","经常"]
 	$scope.importance =["重要","中等","一般"]
