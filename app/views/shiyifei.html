@@ -32,7 +32,7 @@
             <span class="s_span" ng-class="{red:x.importance=='重要',green:x.importance=='中等',blue:x.importance=='一般'}">{{x.importance}}</span>
             </h4>
             </div>
-          <div id="collapse{{$index+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index+1}}"><div class="panel-body"><div class="s_p1"><x ng-bind-html="x.description|MyHtml"></x></div><span>{{x.date}}</span><br>发布人：<span>{{x.from}}</span><button id="s_but" ng-click="fn(x.id)">{{x.status}}</button></div></div></div>
+          <div id="collapse{{$index+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index+1}}"><div class="panel-body"><div class="s_p1"><x ng-bind-html="x.description|MyHtml"></x></div><span>{{x.date}}</span><br>发布人：<span>{{x.from}}</span><button id="s_but" ng-disabled="syf" ng-click="fn(x)">{{x.status}}</button></div></div></div>
         </div>
     	</div>
   <!--手风琴结束-->

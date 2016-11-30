@@ -21,13 +21,8 @@ angular.module("bugcenterApp").filter('f',function(){
 	
 
 
-	$scope.fn=function(e){
-		$http({
-			url:"http://www.bugcenter.com.cn:1511/item/"+e,
-			method:"post",
-			data:{status:1}
-		})
-	}
+
+	$scope.syf = false
 	$scope.arr=[];
 	$scope.arr1=[];
 	$scope.arr2=[];
@@ -99,6 +94,25 @@ angular.module("bugcenterApp").filter('f',function(){
 		}
 	}
  })
+
+$scope.fn=function(e){
+	if(e.status=="解决"){
+		$http({
+			url:"http://www.bugcenter.com.cn:1511/item/"+e.id,
+			method:"post",
+			data:{status:1}
+		}).success(function(){
+			for(var i = 0;i<$scope.Sdata.length;i++){
+				if($scope.Sdata[i].status=="解决"){
+					$scope.Sdata[$scope.Sdata.indexOf(e)].status="已解决"
+				}
+			}
+		})
+	}
+		
+	}
+
+
  $scope.Lns = true
   $scope.Lns1 = true
   $scope.aaaa=''

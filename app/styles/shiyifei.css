@@ -24,7 +24,7 @@ body{width:100%;height: 100%;position:relative;}
 .s_span{color:#fff;border:0px solid #000;width:3.2rem;height:1.4rem;margin-right:0.3rem;float:right;display:inline-block;border-radius: 0.2rem;text-align: center;line-height:1.4rem;font-size:0.4rem;}
 .s_button{margin-left:5.35rem;border-radius: 0.2rem;border:0;background:green;color:#fff;}
 #s_but{width:3.5rem;height:1.5rem;border:0px solid #000;float: right;margin-right:0.2rem;border-radius: 0.1rem;text-align: center;line-height: 0.9rem;font-size:0.5rem;background:green;color:#fff;}
-.panel-title p{border:0px solid #000;width:15rem;display:inline-block;word-wrap:break-word;}
+.panel-title p{border:0px solid #000;width:13rem;display:inline-block;word-wrap:break-word;}
 .red{background:red;}
 .green{background:#337ab7;}
 .blue{background:blue;}
