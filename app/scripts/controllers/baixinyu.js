@@ -27,7 +27,7 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     	params:{to:$scope.u}
     }).success(function(e){
 //  	debugger
-    	$scope.data1=e 
+    	$scope.data1=e
     	$scope.datalen=e.length
     	
     	for(var i=0;i<$scope.data1.length;i++){
@@ -61,7 +61,6 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     		}else if(e[i].status ==2){
     			e[i].status ='已关闭'
     		}
-    		
     	}
     	
     $scope.size=5;
@@ -96,11 +95,6 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
 			$scope.size=5
 		}
 	})
-
-
-    
-    
-    
 }])
 .filter('f',function(){
 	return function(a,page,size){
