@@ -45,7 +45,7 @@
   <!-- 图标结束 -->
  
  <!-- 分页 -->
-  <div class="s_fen">
+  <div id="s_fen">
      <nav>
   <div id='butt'>
      <button ng-click='Fn()' ng-if="Lns">上一页</button>
@@ -60,6 +60,7 @@
     </div>
 </div>
     <script>
+
       var oul=document.getElementById('s_ul');
         var ali=oul.getElementsByTagName('li');
 
@@ -77,7 +78,7 @@
           if(s_nav.style.left=="0rem"){
             s_span.style.color="#9d9d9d";
             
-            s_nav.style.left="-6rem";
+            s_nav.style.left="-8rem";
           }else{
             s_span.style.color="#fff";
             s_nav.style.left="0rem";
@@ -85,12 +86,13 @@
           }         
         }
       s_center.onclick=function(){
-       s_nav.style.left="-6rem";
+       s_nav.style.left="-8rem";
       }
       ali[2].onclick=function(){
         s_tubiao.style.display="block";
         s_box.style.display="none";
-        s_nav.style.left="-6rem";
+        s_nav.style.left="-8rem";
+        s_fen.style.display="none"
         for(var i=0;i<ali.length;i++){
             ali[i].className=""
           }
@@ -99,7 +101,8 @@
       ali[0].onclick=function(){
         s_tubiao.style.display="none";
         s_box.style.display="block";
-        s_nav.style.left="-6rem";
+        s_nav.style.left="-8rem";
+        s_fen.style.display="block"
         for(var i=0;i<ali.length;i++){
             ali[i].className=""
           }
@@ -109,12 +112,7 @@
     </script>
     
     
-   <script type="text/javascript">	
-	document.documentElement.style.fontSize = innerWidth/16+'px';
-	onresize = function(){
-		document.documentElement.style.fontSize = innerWidth/16+'px';
-	};/*/8*/
-	</script>
+   
  
 
 

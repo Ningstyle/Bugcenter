@@ -7,23 +7,20 @@ angular.module("bugcenterApp").filter('f',function(){
 						}
 					}
 				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
-	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-	$scope.series = ['Series A', 'Series B'];
-	$scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90]
-	];
+	$scope.labels = ["重要", "中等", "一般"];
+	// $scope.series = ['重要'];
+	
 	$scope.onClick = function (points, evt) {
 	    console.log(points, evt);
 	};
 
 	  // Simulate async data update
 	$timeout(function () {
-	    $scope.data = [
-	      [28, 48, 40, 19, 86, 27, 90],
-	      [65, 59, 80, 81, 56, 55, 40]
-	    ];
+	    $scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
 	}, 3000);
+	
+
+
 	$scope.fn=function(e){
 		$http({
 			url:"http://www.bugcenter.com.cn:1511/item/"+e,
@@ -31,6 +28,9 @@ angular.module("bugcenterApp").filter('f',function(){
 			data:{status:1}
 		})
 	}
+	$scope.arr=[];
+	$scope.arr1=[];
+	$scope.arr2=[];
 	$scope.datalen=0
 	$scope.user =sessionStorage.Susername
 	// $scope.jiejue="解决"
@@ -44,16 +44,21 @@ angular.module("bugcenterApp").filter('f',function(){
 		$scope.datalen=e.length
 		for(var i=0;i<e.length;i++){
 			if(e[i].importance==0){
+				console.log(e[i].importance.length)
 				// this.Sspan.style.background="red"
 				e[i].importance="重要"
-
+				$scope.arr.push(e[i].importance)
 			}else if(e[i].importance==1){
 				e[i].importance="中等"
+				$scope.arr1.push(e[i].importance)
 			}else if(e[i].importance==2){
 				e[i].importance="一般"
+				$scope.arr2.push(e[i].importance)
 			}
 		}
-		
+		if($scope.arr.length){
+			$scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
+		}
 		for(var i=0;i<e.length;i++){
 			if(e[i].frequency==0){
 				
@@ -71,6 +76,9 @@ angular.module("bugcenterApp").filter('f',function(){
 			}else if(e[i].status==2){
 				e[i].status="已关闭"
 			}
+			// if(e[i].status="已关闭"){
+			// 	s_but.disable=true
+			// }
 			
 		}
 	$scope.size=5;
