@@ -7,35 +7,8 @@ angular.module("bugcenterApp").filter('f',function(){
 						}
 					}
 				}).controller("Lx",["$state","$rootScope","$scope","$http","$interval",function($state,$rootScope,$scope,$http,$interval){
-	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  	$scope.series = ['Series A', 'Series B'];
-  	$scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
-  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-  $scope.options = {
-    scales: {
-      yAxes: [
-        {
-          id: 'y-axis-1',
-          type: 'linear',
-          display: true,
-          position: 'left'
-        },
-        {
-          id: 'y-axis-2',
-          type: 'linear',
-          display: true,
-          position: 'right'
-        }
-      ]
-    }
-  }
-  $scope.datalen=0
+	
+  	$scope.datalen=0
 $scope.Lxuser = sessionStorage.getItem("Lusername")
   if(!$scope.Lxuser){
   	$state.go('/login')
@@ -63,7 +36,8 @@ $scope.Lxipm="Lxred"
   }).success(function(e){
   	$scope.data1=e
   	$scope.datalen=e.length
-  	
+  	$scope.labels = ["重要", "中等", "一般"];
+  	$scope.data = [e.importance=0,e.importance=1,e.importance=2];
   	for(var i=0;i<e.length;i++){
 			if(e[i].status==0){
 				e[i].status="解决"
@@ -75,17 +49,19 @@ $scope.Lxipm="Lxred"
 				e[i].status="已关闭"				
 			}
 		}
+  
   	$scope.Lxdata1 = e
   	for(var i =0;i<e.length;i++){
   		if(e[i].importance==0){
   			e[i].importance="重要"
+  			console.log(e.importance==0)
   		}else if(e[i].importance==1){
   			e[i].importance="中等"
   		}else if(e[i].importance==2){
   			e[i].importance="一般"
   		}
   	}
-//	console.log($scope.Lxdata1)
+	
 	for(var j =0;j<$scope.Lxdata1.length;j++){
 		if($scope.Lxdata1[j].importance=="重要"){
 			$scope.Lxipm="Lxred"
