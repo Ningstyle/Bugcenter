@@ -16,16 +16,8 @@ $scope.Lxuser = sessionStorage.getItem("Lusername")
   	$state.go('/login')
   }
 	
-$scope.fn=function(e){
-	$http({
-		url:'http://www.bugcenter.com.cn:1511/item/'+e,
-		method:'put',
-		data:{status:1}
-	}).success(function(){
-		alert(1)
-		
-})
-}
+
+	$scope.lxc='ng-disabled'
 	$scope.arr=[]
 	$scope.arr1=[]
 	$scope.arr2=[]
@@ -108,6 +100,21 @@ $scope.Lxipm="Lxred"
 		}
 	}
  })
+  
+  
+ $scope.fn=function(e){
+	if(e.status=="解决"){
+		$http({
+			url:'http://www.bugcenter.com.cn:1511/item/'+e.id,
+			method:'put',
+			data:{status:1}
+		}).success(function(){
+			$scope.data1[$scope.data1.indexOf(e)].status="已解决"
+			
+		})
+	}
+}
+  
   $scope.Lns = true
   $scope.Lns1 = true
   $scope.aaa=''

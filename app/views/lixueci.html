@@ -15,10 +15,9 @@
 	<div id="lxc_hz">
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			<!--<shoufenqing data="Lxdata1"></shoufenqing>-->
-			<div class="panel panel-default" ng-repeat="x in data1 | filter:aaa | f:s:size"><div class="panel-heading" role="tab" id="heading{{$index+1}}"><h4 class="panel-title"><p class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index+1}}" aria-expanded="false" aria-controls="collapse{{$index+1}}">{{x.summary}}({{x.frequency}})</p><span class="s_span" ng-class="{red:x.importance=='重要',blue:x.importance=='中等',green:x.importance=='一般'}">{{x.importance}}</span></h4></div><div id="collapse{{$index+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index+1}}"><div class="panel-body"><div class="s_p1"><x ng-bind-html="x.description|MyHtml"></x></div><span>{{x.date}}</span><br>发布人：<span>{{x.from}}</span><button id="s_but" ng-click="fn(x.id)">{{x.status}}</button></div></div></div>
+			<div class="panel panel-default" ng-repeat="x in data1 | filter:aaa | f:s:size"><div class="panel-heading" role="tab" id="heading{{$index+1}}"><h4 class="panel-title"><p class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index+1}}" aria-expanded="false" aria-controls="collapse{{$index+1}}">{{x.summary}}({{x.frequency}})</p><span class="s_span" ng-class="{red:x.importance=='重要',blue:x.importance=='中等',green:x.importance=='一般'}">{{x.importance}}</span></h4></div><div id="collapse{{$index+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index+1}}"><div class="panel-body"><div class="s_p1"><x ng-bind-html="x.description|MyHtml"></x></div><span>{{x.date}}</span><br>发布人：<span>{{x.from}}</span><button id="s_but" ng-click="fn(x)" ng-model="lxc">{{x.status}}</button></div></div></div>
 		</div>
 		<script>
-			
 //			var totalPage=Lxdata1.length
 		</script>
 		<div id='butt'>
