@@ -12,7 +12,6 @@ angular.module("bugcenterApp").controller("Bx",["$state","$rootScope","$scope","
     		data:{status:1}
     	}).success(function(d){
     		alert(1)
-    		     
     	})
     }
     $scope.arr=[]
