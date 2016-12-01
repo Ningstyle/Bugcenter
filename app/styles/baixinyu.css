@@ -79,21 +79,21 @@ body{
 .red{
 	background: red;
     width: 2rem;
-    height: 0.8rem;
+    height: 1.2rem;
     display: inline-block;
     color: #fff;
 }
 .green{
 	background: green;
 	width: 2rem;
-    height: 0.8rem;
+    height: 1.2rem;
     display: inline-block;
     color: #fff;
 }
 .blue{
 	background: blue;
 	width: 2rem;
-    height: 0.8rem;
+    height: 1.2rem;
     display: inline-block;
     color: #fff;
 }
