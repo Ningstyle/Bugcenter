@@ -7,8 +7,8 @@ angular.module("bugcenterApp").filter('f',function(){
 						}
 					}
 				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
-	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-	$scope.series = ['Series A', 'Series B'];
+	$scope.labels = ["重要", "中等", "一般"];
+	$scope.series = ['重要', '中等', '一般'];
 	$scope.data = [
 	    [65, 59, 80, 81, 56, 55, 40],
 	    [28, 48, 40, 19, 86, 27, 90]
@@ -19,20 +19,14 @@ angular.module("bugcenterApp").filter('f',function(){
 
 	  // Simulate async data update
 	$timeout(function () {
-	    $scope.data = [
-	      [28, 48, 40, 19, 86, 27, 90],
-	      [65, 59, 80, 81, 56, 55, 40]
-	    ];
+	    $scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
 	}, 3000);
-	$scope.fn=function(e){
-		$http({
-			url:"http://www.bugcenter.com.cn:1511/item/"+e,
-			method:"post",
-			data:{status:1}
-		})
-	}
+	
 	$scope.datalen=0
 	$scope.user =sessionStorage.Susername
+	$scope.arr=[];
+	$scope.arr1=[];
+	$scope.arr2=[];
 	// $scope.jiejue="解决"
 	$http({
 		url:"http://www.bugcenter.com.cn:1511/item",
@@ -46,11 +40,13 @@ angular.module("bugcenterApp").filter('f',function(){
 			if(e[i].importance==0){
 				// this.Sspan.style.background="red"
 				e[i].importance="重要"
-
+				$scope.arr.push(e[i].importance)
 			}else if(e[i].importance==1){
 				e[i].importance="中等"
+				$scope.arr1.push(e[i].importance)
 			}else if(e[i].importance==2){
 				e[i].importance="一般"
+				$scope.arr2.push(e[i].importance)
 			}
 		}
 		
@@ -73,6 +69,22 @@ angular.module("bugcenterApp").filter('f',function(){
 			}
 			
 		}
+		$scope.fn=function(e){
+	if(e.status=="解决"){
+		$http({
+			url:"http://www.bugcenter.com.cn:1511/item/"+e.id,
+			method:"post",
+			data:{status:1}
+		}).success(function(){
+			for(var i = 0;i<$scope.Sdata.length;i++){
+				if($scope.Sdata[i].status=="解决"){
+					$scope.Sdata[$scope.Sdata.indexOf(e)].status="已解决"
+				}
+			}
+		})
+	}
+		
+	}
 	$scope.size=5;
 	$scope.s=0;
 	$scope.Le= Math.ceil($scope.datalen/$scope.size)
