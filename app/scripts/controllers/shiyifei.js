@@ -8,8 +8,13 @@ angular.module("bugcenterApp").filter('f',function(){
 					}
 				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.labels = ["重要", "中等", "一般"];
-	// $scope.series = ['重要'];
-	
+
+	$scope.series = ['重要', '中等', '一般'];
+	$scope.data = [
+	    [65, 59, 80, 81, 56, 55, 40],
+	    [28, 48, 40, 19, 86, 27, 90]
+	];
+
 	$scope.onClick = function (points, evt) {
 	    console.log(points, evt);
 	};
@@ -20,14 +25,11 @@ angular.module("bugcenterApp").filter('f',function(){
 	}, 3000);
 	
 
-
-
-	$scope.syf = false
+	$scope.datalen=0
+	$scope.user =sessionStorage.Susername
 	$scope.arr=[];
 	$scope.arr1=[];
 	$scope.arr2=[];
-	$scope.datalen=0
-	$scope.user =sessionStorage.Susername
 	// $scope.jiejue="解决"
 	$http({
 		url:"http://www.bugcenter.com.cn:1511/item",
@@ -76,6 +78,22 @@ angular.module("bugcenterApp").filter('f',function(){
 			// }
 			
 		}
+		$scope.fn=function(e){
+	if(e.status=="解决"){
+		$http({
+			url:"http://www.bugcenter.com.cn:1511/item/"+e.id,
+			method:"post",
+			data:{status:1}
+		}).success(function(){
+			for(var i = 0;i<$scope.Sdata.length;i++){
+				if($scope.Sdata[i].status=="解决"){
+					$scope.Sdata[$scope.Sdata.indexOf(e)].status="已解决"
+				}
+			}
+		})
+	}
+		
+	}
 	$scope.size=5;
 	$scope.s=0;
 	$scope.Le= Math.ceil($scope.datalen/$scope.size)
