@@ -8,11 +8,13 @@ angular.module("bugcenterApp").filter('f',function(){
 					}
 				}).controller("Sy",["$state","$rootScope","$scope","$http","$interval","$timeout",function($state,$rootScope,$scope,$http,$interval,$timeout){
 	$scope.labels = ["重要", "中等", "一般"];
+
 	$scope.series = ['重要', '中等', '一般'];
 	$scope.data = [
 	    [65, 59, 80, 81, 56, 55, 40],
 	    [28, 48, 40, 19, 86, 27, 90]
 	];
+
 	$scope.onClick = function (points, evt) {
 	    console.log(points, evt);
 	};
@@ -22,6 +24,7 @@ angular.module("bugcenterApp").filter('f',function(){
 	    $scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
 	}, 3000);
 	
+
 	$scope.datalen=0
 	$scope.user =sessionStorage.Susername
 	$scope.arr=[];
@@ -38,6 +41,7 @@ angular.module("bugcenterApp").filter('f',function(){
 		$scope.datalen=e.length
 		for(var i=0;i<e.length;i++){
 			if(e[i].importance==0){
+				console.log(e[i].importance.length)
 				// this.Sspan.style.background="red"
 				e[i].importance="重要"
 				$scope.arr.push(e[i].importance)
@@ -49,7 +53,9 @@ angular.module("bugcenterApp").filter('f',function(){
 				$scope.arr2.push(e[i].importance)
 			}
 		}
-		
+		if($scope.arr.length){
+			$scope.data = [$scope.arr.length,$scope.arr1.length,$scope.arr2.length];
+		}
 		for(var i=0;i<e.length;i++){
 			if(e[i].frequency==0){
 				
@@ -67,6 +73,9 @@ angular.module("bugcenterApp").filter('f',function(){
 			}else if(e[i].status==2){
 				e[i].status="已关闭"
 			}
+			// if(e[i].status="已关闭"){
+			// 	s_but.disable=true
+			// }
 			
 		}
 		$scope.fn=function(e){
@@ -103,6 +112,25 @@ angular.module("bugcenterApp").filter('f',function(){
 		}
 	}
  })
+
+$scope.fn=function(e){
+	if(e.status=="解决"){
+		$http({
+			url:"http://www.bugcenter.com.cn:1511/item/"+e.id,
+			method:"post",
+			data:{status:1}
+		}).success(function(){
+			for(var i = 0;i<$scope.Sdata.length;i++){
+				if($scope.Sdata[i].status=="解决"){
+					$scope.Sdata[$scope.Sdata.indexOf(e)].status="已解决"
+				}
+			}
+		})
+	}
+		
+	}
+
+
  $scope.Lns = true
   $scope.Lns1 = true
   $scope.aaaa=''

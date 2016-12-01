@@ -9,28 +9,26 @@
 </div>
 <div id="box">
 	<div class='lxc_input'>
-		<input class='lxc_texta' type="text" />
+		<input class='lxc_texta' type="text" ng-model='aaa'/>
 		<button class='lxc_btn'>搜索</button>
 	</div>
 	<div id="lxc_hz">
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			<shoufenqing data="Lxdata1"></shoufenqing>
+			<!--<shoufenqing data="Lxdata1"></shoufenqing>-->
+			<div class="panel panel-default" ng-repeat="x in data1 | filter:aaa | f:s:size"><div class="panel-heading" role="tab" id="heading{{$index+1}}"><h4 class="panel-title"><p class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index+1}}" aria-expanded="false" aria-controls="collapse{{$index+1}}">{{x.summary}}({{x.frequency}})</p><span class="s_span" ng-class="{red:x.importance=='重要',blue:x.importance=='中等',green:x.importance=='一般'}">{{x.importance}}</span></h4></div><div id="collapse{{$index+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index+1}}"><div class="panel-body"><div class="s_p1"><x ng-bind-html="x.description|MyHtml"></x></div><span>{{x.date}}</span><br>发布人：<span>{{x.from}}</span><button id="s_but" ng-click="fn(x)" ng-model="lxc">{{x.status}}</button></div></div></div>
 		</div>
 		<script>
-			
 //			var totalPage=Lxdata1.length
 		</script>
 		<div id='butt'>
-			<!--<ul class="pagination" style="margin: 0px;">
-				<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:;" ng-click="p_index()">首页</a></li>
-				<li ng-class="{true:'active'}[p_current==page]" ng-repeat="page in pages"><a href="javascript:;" ng-click="load_page(page)">{{ page }}</a></li>
-				<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:;" ng-click="p_last()">尾页</a></li>
-			</ul>-->
-			
+			<button ng-click='Fn()' ng-if="Lns">上一页</button>
+			<button ng-click='Fn1()' ng-if="Lns1">下一页</button>
 		</div>
 	</div>
 	<div class='lxc_tb'>
-		<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick"></canvas>
+		<canvas id="pie" class="chart chart-pie"
+  chart-data="data" chart-labels="labels" chart-options="options">
+</canvas> 
 	</div>
 </div>
 <script>
